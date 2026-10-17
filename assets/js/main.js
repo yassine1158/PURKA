@@ -231,7 +231,7 @@
     $$("[data-site-href]").forEach((el) => { const v = d[el.dataset.site || el.dataset.qc]; if (v) el.href = el.dataset.siteHref + ":" + v.replace(/\s/g, ""); });
     const wa = d.whatsapp ? "https://wa.me/" + d.whatsapp : null;
     if (wa) ["#wa", "#faq-wa", "#qc-wa", "#cta-wa"].forEach((s) => { const el = $(s); if (el) el.href = wa; });
-    const map = $("#map"); if (map && (d.mapQuery || d.address)) map.src = "https://maps.google.com/maps?q=" + encodeURIComponent(d.mapQuery || d.address) + "&z=7&output=embed";
+    const map = $("#map"); if (map && (d.mapQuery || d.address)) map.src = "https://maps.google.com/maps?q=" + encodeURIComponent(d.mapQuery || d.address) + "&z=11&output=embed";
 
     const stats = $("#stats");
     if (stats) {

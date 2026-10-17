@@ -1,9 +1,9 @@
 {
   "company": "PURCA",
-  "tagline": "Caoutchouc naturel · Côte d'Ivoire",
+  "tagline": "Caoutchouc naturel · San-Pédro, Côte d'Ivoire",
   "heroTitle": "Le caoutchouc naturel TSR de Côte d'Ivoire",
   "heroText": "PURCA transforme le coagulum des planteurs d'hévéa en caoutchouc technique TSR10 et TSR20 : lavé, séché, pressé en balles et analysé lot par lot selon la norme ISO 2000.",
-  "about": "Installée en Côte d'Ivoire, premier producteur africain de caoutchouc naturel, PURCA transforme le coagulum collecté auprès des planteurs dans sa propre usine. Chaque lot est contrôlé au laboratoire avant d'être pressé en balles et expédié aux manufacturiers du pneumatique et de l'industrie du caoutchouc.",
+  "about": "Installée à San-Pédro, au cœur de la première région productrice de caoutchouc de Côte d'Ivoire et à proximité de son port d'exportation, PURCA transforme le coagulum collecté auprès des planteurs dans sa propre usine. Chaque lot est contrôlé au laboratoire avant d'être pressé en balles et expédié aux manufacturiers du pneumatique et de l'industrie du caoutchouc.",
   "stats": [
     {
       "value": 2,
@@ -29,9 +29,9 @@
   "phone": "+225 00 00 00 00 00",
   "whatsapp": "2250000000000",
   "email": "contact@purca.ci",
-  "address": "Côte d'Ivoire",
+  "address": "San-Pédro, Côte d'Ivoire",
   "hours": "Lundi – Samedi : 7h00 – 18h00",
-  "mapQuery": "Côte d'Ivoire",
+  "mapQuery": "San-Pédro, Côte d'Ivoire",
   "gallery": [
     "assets/img/plantation.jpg",
     "assets/img/saignee.jpg",
