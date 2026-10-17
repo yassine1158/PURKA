@@ -17,10 +17,131 @@
   $("#year").textContent = new Date().getFullYear();
   $$("[data-nav]").forEach((a) => a.classList.toggle("current", a.dataset.nav === body.dataset.page));
 
-  /* ---------- en-tête et menu ---------- */
-  const header = $("#header");
-  const onScroll = () => header.classList.toggle("scrolled", scrollY > 8);
-  addEventListener("scroll", onScroll, { passive: true }); onScroll();
+  const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  /* ---------- titres découpés en mots ---------- */
+  const splitWords = (el) => {
+    const words = el.textContent.trim().split(/\s+/);
+    el.innerHTML = words.map((w, i) => `<span class="w"><span style="transition-delay:${0.1 + i * 0.06}s">${esc(w)}</span></span>`).join(" ");
+  };
+  $$("[data-split]").forEach(splitWords);
+
+  /* ---------- entrée de page et transitions ---------- */
+  requestAnimationFrame(() => setTimeout(() => body.classList.add("loaded"), 40));
+  addEventListener("pageshow", (e) => { if (e.persisted) { body.classList.remove("leaving"); body.classList.add("loaded"); } });
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest("a[href]");
+    if (!a || reduce || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target === "_blank") return;
+    const url = new URL(a.href, location.href);
+    if (url.origin !== location.origin || (url.pathname === location.pathname && url.search === location.search)) return;
+    if (/\/admin\/?$/.test(url.pathname)) return;
+    e.preventDefault(); body.classList.add("leaving");
+    setTimeout(() => (location.href = url.href), 380);
+  });
+
+  /* ---------- en-tête, progression, parallaxe ---------- */
+  const header = $("#header"), progress = $("#progress");
+  const overHero = $("main > .hero-full, main > .page-hero");
+  if (overHero) body.classList.add("has-hero");
+  const paras = $$("[data-parallax]");
+  const steps = $("#steps");
+  let lastY = scrollY, ticking = false;
+  const onScroll = () => {
+    const y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
+    header.classList.toggle("scrolled", y > 24 || !overHero);
+    header.classList.toggle("hide", y > 420 && y > lastY + 4 && !menu.classList.contains("open"));
+    if (y < lastY - 4 || y < 420) header.classList.remove("hide");
+    lastY = y;
+    progress.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+    if (!reduce) paras.forEach((el) => {
+      const r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight) return;
+      el.style.transform = `translate3d(0,${((r.top + r.height / 2) - innerHeight / 2) * -+el.dataset.parallax}px,0) scale(${el.dataset.parallax > 0 ? 1.12 : 1.08})`;
+    });
+    if (steps) {
+      const r = steps.getBoundingClientRect();
+      steps.style.setProperty("--p", Math.min(Math.max((innerHeight * 0.8 - r.top) / (r.height + innerHeight * 0.3), 0), 1));
+    }
+    ticking = false;
+  };
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  addEventListener("resize", onScroll);
+
+  /* ---------- diaporama du hero ---------- */
+  const slides = $$(".hero-slides img"), dots = $("#slide-dots");
+  if (slides.length > 1 && dots) {
+    let si = 0, timer;
+    dots.innerHTML = slides.map((_, i) => `<button type="button" aria-label="Photo ${i + 1}"><i></i></button>`).join("");
+    const btns = $$("button", dots);
+    const go = (i) => {
+      slides[si].classList.remove("active"); btns[si].classList.remove("on");
+      si = (i + slides.length) % slides.length;
+      slides[si].classList.add("active"); void btns[si].offsetWidth; btns[si].classList.add("on");
+      clearTimeout(timer); if (!reduce) timer = setTimeout(() => go(si + 1), 6500);
+    };
+    btns.forEach((b, i) => (b.onclick = () => go(i)));
+    go(0);
+  }
+
+  /* ---------- effets souris (ordinateur) ---------- */
+  if (finePointer && !reduce) {
+    document.documentElement.classList.add("has-cursor");
+    const cur = $("#cursor"), dot = $(".cursor-dot"), ring = $(".cursor-ring"), label = $("em", ring);
+    let x = -100, y = -100, rx = x, ry = y;
+    addEventListener("mousemove", (e) => { x = e.clientX; y = e.clientY; cur.classList.remove("off"); });
+    document.addEventListener("mouseleave", () => cur.classList.add("off"));
+    addEventListener("mouseover", (e) => {
+      const v = e.target.closest("[data-cursor]");
+      cur.classList.toggle("view", !!v);
+      cur.classList.toggle("link", !v && !!e.target.closest("a,button,summary,label,select,input,textarea"));
+      if (v) label.textContent = v.dataset.cursor;
+    });
+    (function loop() {
+      rx += (x - rx) * 0.2; ry += (y - ry) * 0.2;
+      dot.style.transform = `translate(${x}px,${y}px)`; ring.style.transform = `translate(${rx}px,${ry}px)`;
+      requestAnimationFrame(loop);
+    })();
+
+    document.addEventListener("mousemove", (e) => {
+      const m = e.target.closest(".btn-magnetic");
+      if (m) { const r = m.getBoundingClientRect(); m.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.18}px,${(e.clientY - r.top - r.height / 2) * 0.3}px)`; }
+      const g = e.target.closest(".glow");
+      if (g) { const r = g.getBoundingClientRect(); g.style.setProperty("--gx", `${e.clientX - r.left}px`); g.style.setProperty("--gy", `${e.clientY - r.top}px`); }
+    });
+    document.addEventListener("mouseout", (e) => { const m = e.target.closest(".btn-magnetic"); if (m && !m.contains(e.relatedTarget)) m.style.transform = ""; });
+
+    const fl = $("#industry-float");
+    if (fl) {
+      const img = $("img", fl); let fx = 0, fy = 0, tx = 0, ty = 0;
+      $$(".industry").forEach((s) => {
+        s.addEventListener("mouseenter", () => { img.src = s.dataset.img; fl.classList.add("on"); });
+        s.addEventListener("mouseleave", () => fl.classList.remove("on"));
+      });
+      on("#industries", "mousemove", (e) => { tx = e.clientX; ty = e.clientY; });
+      (function floatLoop() {
+        if (fl.classList.contains("on")) { fx += (tx - fx) * 0.14; fy += (ty - fy) * 0.14; fl.style.translate = `${fx}px ${fy}px`; fl.style.rotate = `${(tx - fx) * 0.03}deg`; }
+        requestAnimationFrame(floatLoop);
+      })();
+    }
+  }
+  const tilt = (el) => {
+    if (!finePointer || reduce) return;
+    el.addEventListener("mousemove", (e) => {
+      const r = el.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+      el.style.setProperty("--mx", `${px * 100}%`); el.style.setProperty("--my", `${py * 100}%`);
+      el.style.transform = `perspective(1100px) rotateY(${(px - 0.5) * 5}deg) rotateX(${(0.5 - py) * 5}deg) translateY(-4px)`;
+    });
+    el.addEventListener("mouseleave", () => (el.style.transform = ""));
+  };
+
+  /* ---------- compteurs ---------- */
+  const countIO = "IntersectionObserver" in window ? new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return; countIO.unobserve(e.target);
+    const b = e.target, end = +b.dataset.to, suf = b.dataset.suffix || "", t0 = performance.now();
+    if (reduce) { b.textContent = end + suf; return; }
+    const step = (t) => { const k = Math.min((t - t0) / 1600, 1); b.textContent = Math.round(end * (1 - Math.pow(1 - k, 4))) + suf; if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }), { threshold: 0.6 }) : null;
 
   const burger = $("#burger"), menu = $("#menu");
   const toggleMenu = (open) => {
@@ -41,8 +162,15 @@
   const io = "IntersectionObserver" in window && !reduce
     ? new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px" })
     : null;
-  const observe = (root = document) => $$(".reveal:not(.in)", root).forEach((el) => (io ? io.observe(el) : el.classList.add("in")));
+  const observe = (root = document) => {
+    let n = 0;
+    $$(".reveal:not(.in), .reveal-clip:not(.in)", root).forEach((el) => {
+      if (el.classList.contains("reveal")) el.style.transitionDelay = `${(n++ % 4) * 0.08}s`;
+      io ? io.observe(el) : el.classList.add("in");
+    });
+  };
   observe();
+  onScroll();
 
   /* =========================================================
      Demande de devis (partagée entre les pages)
@@ -99,19 +227,24 @@
      ========================================================= */
   fetch("data/site.json" + bust).then((r) => r.json()).then((d) => {
     site = d;
-    $$("[data-site]").forEach((el) => { const v = d[el.dataset.site]; if (v) el.textContent = v; });
+    $$("[data-site]").forEach((el) => { const v = d[el.dataset.site]; if (!v) return; el.textContent = v; if (el.hasAttribute("data-split")) splitWords(el); });
     $$("[data-site-href]").forEach((el) => { const v = d[el.dataset.site || el.dataset.qc]; if (v) el.href = el.dataset.siteHref + ":" + v.replace(/\s/g, ""); });
     const wa = d.whatsapp ? "https://wa.me/" + d.whatsapp : null;
     if (wa) ["#wa", "#faq-wa", "#qc-wa", "#cta-wa"].forEach((s) => { const el = $(s); if (el) el.href = wa; });
     const map = $("#map"); if (map && (d.mapQuery || d.address)) map.src = "https://maps.google.com/maps?q=" + encodeURIComponent(d.mapQuery || d.address) + "&z=7&output=embed";
 
     const stats = $("#stats");
-    if (stats) stats.innerHTML = (d.stats || []).map((s) => `<div class="stat"><b>${esc(s.value)}${esc(s.suffix)}</b><span>${esc(s.label)}</span></div>`).join("");
+    if (stats) {
+      stats.innerHTML = (d.stats || []).map((s) => `<div class="stat reveal"><b data-to="${+s.value || 0}" data-suffix="${esc(s.suffix)}">${esc(s.value)}${esc(s.suffix)}</b><span>${esc(s.label)}</span></div>`).join("");
+      if (countIO) $$(".stat b", stats).forEach((b) => countIO.observe(b));
+      observe(stats);
+    }
 
     const gal = $("#gallery");
     if (gal) {
       const g = d.gallery || [], lim = +gal.dataset.limit || g.length;
-      gal.innerHTML = g.slice(0, lim).map((src, i) => `<button type="button" data-i="${i}" aria-label="Agrandir la photo ${i + 1}"><img src="${esc(src)}" alt="PURCA, photo ${i + 1}" loading="lazy"></button>`).join("");
+      gal.innerHTML = g.slice(0, lim).map((src, i) => `<button type="button" class="reveal" data-i="${i}" data-cursor="Voir" aria-label="Agrandir la photo ${i + 1}"><img src="${esc(src)}" alt="PURCA, photo ${i + 1}" loading="lazy"></button>`).join("");
+      observe(gal);
       $$("button", gal).forEach((b) => (b.onclick = () => openLb(+b.dataset.i)));
       const c = $("#gal-count"); if (c) c.textContent = `${g.length} photos`;
     }
@@ -160,7 +293,11 @@
     ["volatile", "Matières volatiles, max.", "%"], ["po", "Plasticité initiale P0, min.", ""], ["pri", "Indice PRI, min.", ""],
   ];
   const isoHTML = (list) => `<thead><tr><th scope="col">Paramètre</th>${list.length > 1 ? list.map((p) => `<th scope="col" class="n">${esc(p.grade || p.name)}</th>`).join("") : '<th scope="col" class="n">Limite</th>'}</tr></thead>
-    <tbody>${ISO.map(([k, label, u]) => `<tr><th scope="row">${label}${u ? ` <small>(${u})</small>` : ""}</th>${list.map((p) => `<td class="n">${esc((p.specs || {})[k] || "—")}</td>`).join("")}</tr>`).join("")}</tbody>`;
+    <tbody>${ISO.map(([k, label, u]) => {
+      // barre proportionnelle à la plus grande valeur de la ligne, pour comparer les grades d'un coup d'œil
+      const nums = list.map((p) => parseFloat(String((p.specs || {})[k] || "").replace(",", ".")) || 0), max = Math.max(...nums);
+      return `<tr><th scope="row">${label}${u ? ` <small>(${u})</small>` : ""}</th>${list.map((p, i) => `<td class="n">${list.length > 1 && max ? `<span class="bar" style="--w:${Math.round(nums[i] / max * 100)}%"></span>` : ""}<span class="v">${esc((p.specs || {})[k] || "—")}</span></td>`).join("")}</tr>`;
+    }).join("")}</tbody>`;
   const factsHTML = (p) => [
     ["Grade", esc(p.grade || "—")],
     ["Norme", "ISO 2000"],
@@ -171,7 +308,7 @@
 
   const currentId = new URLSearchParams(location.search).get("id");
   const cardHTML = (p) => `
-    <article class="card ${p.available === false ? "out" : ""}">
+    <article class="card ${p.available === false ? "out" : ""}"><span class="card-glow" aria-hidden="true"></span>
       <div class="card-top">
         <span class="chip">${esc(catLabel(p.category))}</span>
         <span class="avail ${p.available === false ? "ko" : "ok"}">${p.available === false ? "Rupture" : "Disponible"}</span>
@@ -203,6 +340,7 @@
       box.classList.toggle("products-2", shown.length === 2);
       box.classList.toggle("products-1", shown.length === 1);
       box.innerHTML = shown.length ? shown.map(cardHTML).join("") : '<p class="muted">Aucun produit pour le moment.</p>';
+      $$(".card", box).forEach((c) => { c.classList.add("reveal"); tilt(c); }); observe(box);
       box.addEventListener("click", (e) => {
         const add = e.target.closest(".card-add"); if (!add) return;
         const name = add.dataset.name;

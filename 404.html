@@ -21,11 +21,15 @@
 </head>
 <body data-page="404">
   <a class="skip" href="#main">Aller au contenu</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="curtain" aria-hidden="true"><img src="assets/img/mark.png" alt=""></div>
+  <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"><em></em></span></div>
 
   <header class="site-header" id="header">
     <div class="container header-in">
       <a href="index.html" class="brand" aria-label="PURCA, accueil">
-        <img src="assets/img/logo.png" alt="PURCA" width="168" height="40">
+        <img class="logo-dark" src="assets/img/logo.png" alt="PURCA" width="168" height="40">
+        <img class="logo-light" src="assets/img/logo-light.png" alt="" width="168" height="40">
       </a>
       <nav class="nav" id="menu" aria-label="Navigation principale">
         <a href="index.html" data-nav="accueil">Accueil</a>
@@ -49,19 +53,23 @@
 
   <main id="main">
     <section class="page-hero page-404">
+      <div class="page-hero-bg" style="background-image:url(assets/img/allee-heveas.jpg)" data-parallax="0.3"></div>
       <div class="container">
         <p class="eyebrow">Erreur 404</p>
-        <h1>Page introuvable</h1>
-        <p class="lead">Cette page n'existe pas ou a été déplacée.</p>
+        <h1 data-split>Page introuvable</h1>
+        <p class="lead load-up">Cette page n'existe pas ou a été déplacée.</p>
         <div class="btn-row">
           <a href="index.html" class="btn">Retour à l'accueil <svg class="ic"><use href="#i-arrow"/></svg></a>
-          <a href="produits.html" class="btn btn-ghost">Nos produits</a>
+          <a href="produits.html" class="btn btn-outline-light">Nos produits</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
+    <a href="contact.html#quote" class="footer-marquee" aria-label="Demander un devis">
+      <span class="marquee-track" aria-hidden="true"><span>Parlons de votre besoin</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre besoin</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre besoin</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre besoin</span><svg class="ic"><use href="#i-arrow"/></svg></span>
+    </a>
     <div class="container foot">
       <div class="foot-brand">
         <img src="assets/img/logo-light.png" alt="PURCA" width="168" height="40">
