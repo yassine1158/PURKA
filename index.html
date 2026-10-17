@@ -258,8 +258,8 @@
           <p class="section-lead" data-i18n="contact.lead">Indiquez le grade, le volume et la destination. Nous revenons vers vous avec une offre et une fiche technique.</p>
           <dl class="coords">
             <div><dt data-i18n="c.email">E-mail</dt><dd><a href="mailto:contact@purca.com" id="contact-email">contact@purca.com</a></dd></div>
-            <div><dt data-i18n="c.phone">Téléphone</dt><dd><a href="tel:+2250000000000">+225 00 00 00 00 00</a></dd></div>
-            <div><dt data-i18n="c.address">Adresse</dt><dd data-i18n="c.address.v">Adresse de l'usine, Côte d'Ivoire</dd></div>
+            <div><dt data-i18n="c.phone">Téléphone</dt><dd><a href="tel:+2250000000000" id="contact-phone">+225 00 00 00 00 00</a></dd></div>
+            <div><dt data-i18n="c.address">Adresse</dt><dd id="contact-address" data-i18n="c.address.v">Adresse de l'usine, Côte d'Ivoire</dd></div>
           </dl>
         </div>
 
@@ -298,8 +298,13 @@
             <label for="q-msg" data-i18n="f.msg">Message</label>
             <textarea id="q-msg" name="message" rows="4"></textarea>
           </div>
+          <div class="hp" aria-hidden="true">
+            <label for="q-website">Site web</label>
+            <input id="q-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
           <p class="form-error" id="form-error" role="alert" hidden></p>
-          <button class="btn btn-primary" type="submit" data-i18n="f.send">Envoyer la demande</button>
+          <p class="form-success" id="form-success" role="status" hidden data-i18n="f.ok">Merci, votre demande a bien été envoyée. Nous vous répondrons rapidement.</p>
+          <button class="btn btn-primary" id="q-submit" type="submit" data-i18n="f.send">Envoyer la demande</button>
         </form>
       </div>
     </section>
@@ -316,6 +321,8 @@
     </div>
   </footer>
 
+  <script src="assets/js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

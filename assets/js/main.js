@@ -101,6 +101,7 @@
     "f.country": "Delivery country",
     "f.msg": "Message",
     "f.send": "Send request",
+    "f.ok": "Thank you, your request has been sent. We will get back to you shortly.",
     "footer.tag": "Technically specified natural rubber, TSR10 and TSR20, made in Côte d'Ivoire.",
     "footer.rights": "All rights reserved."
   };
@@ -109,6 +110,13 @@
     fr: "Merci de remplir la société, le nom et une adresse e-mail valide.",
     en: "Please fill in company, name and a valid email address."
   };
+
+  // Supabase is optional: without it the form falls back to the visitor's mail client
+  var cfg = window.PURCA_CONFIG || {};
+  var db = null;
+  if (cfg.supabaseUrl && cfg.supabaseAnonKey && window.supabase) {
+    db = window.supabase.createClient(cfg.supabaseUrl, cfg.supabaseAnonKey);
+  }
 
   var nodes = document.querySelectorAll("[data-i18n]");
   var FR = {};
@@ -155,10 +163,60 @@
     }, 3000);
   }
 
-  // Quote form: opens the visitor's mail client with a prefilled request
+  // Contact details managed from the admin page
+  var emailLink = document.getElementById("contact-email");
+  var phoneLink = document.getElementById("contact-phone");
+  var addressEl = document.getElementById("contact-address");
+
+  if (db) {
+    db.from("settings").select("key, value").then(function (res) {
+      if (res.error || !res.data) return;
+      var s = {};
+      res.data.forEach(function (row) { s[row.key] = (row.value || "").trim(); });
+      if (s.email) {
+        emailLink.textContent = s.email;
+        emailLink.href = "mailto:" + s.email;
+      }
+      if (s.phone) {
+        phoneLink.textContent = s.phone;
+        phoneLink.href = "tel:" + s.phone.replace(/[^+\d]/g, "");
+      }
+      if (s.address_fr) FR["c.address.v"] = escapeHtml(s.address_fr);
+      if (s.address_en) EN["c.address.v"] = escapeHtml(s.address_en);
+      var dict = current === "en" ? EN : FR;
+      addressEl.innerHTML = dict["c.address.v"];
+    });
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  // Quote form: saved to the database, or sent through the visitor's mail client
   var form = document.getElementById("quote-form");
   var errorBox = document.getElementById("form-error");
-  var to = document.getElementById("contact-email").textContent.trim();
+  var successBox = document.getElementById("form-success");
+  var submitBtn = document.getElementById("q-submit");
+
+  function openMail(f) {
+    var to = emailLink.textContent.trim();
+    var subject = (current === "en" ? "Quote request " : "Demande de devis ") + f.grade.value + " - " + f.company.value.trim();
+    var lines = [
+      (current === "en" ? "Company: " : "Société : ") + f.company.value.trim(),
+      (current === "en" ? "Name: " : "Nom : ") + f.name.value.trim(),
+      "E-mail : " + f.email.value.trim(),
+      "Grade : " + f.grade.value,
+      (current === "en" ? "Volume (t/month): " : "Volume (t/mois) : ") + (f.volume.value || "-"),
+      (current === "en" ? "Delivery country: " : "Pays de livraison : ") + (f.country.value.trim() || "-"),
+      "",
+      f.message.value.trim()
+    ];
+    window.location.href = "mailto:" + to +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(lines.join("\n"));
+  }
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -177,21 +235,41 @@
     }
     errorBox.hidden = true;
 
-    var subject = (current === "en" ? "Quote request " : "Demande de devis ") + f.grade.value + " - " + f.company.value.trim();
-    var lines = [
-      (current === "en" ? "Company: " : "Société : ") + f.company.value.trim(),
-      (current === "en" ? "Name: " : "Nom : ") + f.name.value.trim(),
-      "E-mail : " + f.email.value.trim(),
-      "Grade : " + f.grade.value,
-      (current === "en" ? "Volume (t/month): " : "Volume (t/mois) : ") + (f.volume.value || "-"),
-      (current === "en" ? "Delivery country: " : "Pays de livraison : ") + (f.country.value.trim() || "-"),
-      "",
-      f.message.value.trim()
-    ];
-    window.location.href = "mailto:" + to +
-      "?subject=" + encodeURIComponent(subject) +
-      "&body=" + encodeURIComponent(lines.join("\n"));
+    // Bots fill the hidden field; pretend success and drop the request
+    if (f.website.value) {
+      form.reset();
+      successBox.hidden = false;
+      return;
+    }
+
+    if (!db) {
+      openMail(f);
+      return;
+    }
+
+    submitBtn.disabled = true;
+    var volume = parseInt(f.volume.value, 10);
+    db.from("quotes").insert({
+      company: f.company.value.trim(),
+      name: f.name.value.trim(),
+      email: f.email.value.trim(),
+      grade: f.grade.value,
+      volume: isNaN(volume) ? null : volume,
+      country: f.country.value.trim() || null,
+      message: f.message.value.trim() || null,
+      lang: current
+    }).then(function (res) {
+      submitBtn.disabled = false;
+      if (res.error) {
+        openMail(f);
+        return;
+      }
+      form.reset();
+      successBox.hidden = false;
+    });
   });
+
+  form.addEventListener("input", function () { successBox.hidden = true; });
 
   document.getElementById("year").textContent = new Date().getFullYear();
 })();
