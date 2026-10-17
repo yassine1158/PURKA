@@ -1,0 +1,253 @@
+<!--{"title":"PURCA — Caoutchouc naturel TSR10 et TSR20 | Côte d'Ivoire","desc":"PURCA produit en Côte d'Ivoire du caoutchouc naturel technique TSR10 et TSR20 conforme ISO 2000, en balles de 33,33 kg. Devis rapide par WhatsApp.","page":"onepage"}-->
+    <section id="accueil" class="hero">
+      <div class="hero-media">
+        <div class="slide active" style="background-image:url(assets/img/plantation.jpg)"></div>
+        <div class="slide" style="background-image:url(assets/img/crepage.jpg)"></div>
+        <div class="slide" style="background-image:url(assets/img/sechage.jpg)"></div>
+        <div class="slide" style="background-image:url(assets/img/balles.jpg)"></div>
+      </div>
+      <canvas id="dust"></canvas>
+      <div class="hero-shade"></div>
+      <div class="grain"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="kicker split-up"><i class="flag"><b></b><b></b><b></b></i><span data-site="tagline">Caoutchouc naturel · Côte d'Ivoire</span></span>
+          <h1 class="hero-title" data-site="heroTitle" data-split>Le caoutchouc naturel TSR de Côte d'Ivoire</h1>
+          <p class="hero-text split-up" data-site="heroText"></p>
+          <div class="hero-actions split-up">
+            <a href="#produits" class="btn magnetic">Voir nos produits <svg class="ic"><use href="#i-arrow"/></svg></a>
+            <a href="#contact" class="btn btn-outline magnetic">Demander un devis</a>
+          </div>
+        </div>
+
+        <aside class="hero-card split-up">
+          <div class="hc-head"><span class="live"></span>Production en cours</div>
+          <ul id="hero-products"><li class="sk"></li><li class="sk"></li><li class="sk"></li></ul>
+          <a href="#contact" class="hc-link">Commander maintenant <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </aside>
+      </div>
+
+      <div class="hero-bottom container">
+        <div class="slide-nav" id="slide-nav"></div>
+        <a href="#entreprise" class="scroll-cue">Défiler <span></span></a>
+      </div>
+    </section>
+
+    <!-- Bandeau défilant -->
+    <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+
+    <section id="entreprise" class="section about-sec">
+      <span class="bg-word" data-speed="-0.15">HÉVÉA</span>
+      <div class="container about">
+        <div class="about-media">
+          <div class="mask-reveal main-img"><img src="assets/img/plantation.jpg" alt="Plantation d'hévéas et saignée" loading="lazy"></div>
+          <div class="mask-reveal sub-img" data-speed="0.08"><img src="assets/img/coagulum.jpg" alt="Coagulum de caoutchouc à la réception" loading="lazy"></div>
+          <div class="seal">
+            <svg viewBox="0 0 200 200"><defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+              <text font-size="12" font-weight="700"><textPath href="#circ" textLength="486" lengthAdjust="spacing">CAOUTCHOUC NATUREL • CÔTE D'IVOIRE • PURCA • </textPath></text></svg>
+            <img src="assets/img/mark.png" alt="">
+          </div>
+        </div>
+        <div class="about-text">
+          <span class="eyebrow reveal">L'entreprise</span>
+          <h2 class="reveal">Du coagulum <br>à la <em>balle certifiée.</em></h2>
+          <p class="lead reveal" data-site="about"></p>
+          <div class="features">
+            <div class="feat reveal"><svg class="ic"><use href="#i-leaf"/></svg><div><h4>Proche des planteurs</h4><p>Coagulum collecté auprès des planteurs ivoiriens.</p></div></div>
+            <div class="feat reveal"><svg class="ic"><use href="#i-gear"/></svg><div><h4>Usine de transformation</h4><p>Lavage, crêpage, séchage et pressage.</p></div></div>
+            <div class="feat reveal"><svg class="ic"><use href="#i-flask"/></svg><div><h4>Laboratoire interne</h4><p>Six paramètres ISO 2000 sur chaque lot.</p></div></div>
+            <div class="feat reveal"><svg class="ic"><use href="#i-ship"/></svg><div><h4>Prêt à l'export</h4><p>Balles filmées, palettisées, tracées par lot.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHIFFRES -->
+    <section class="stats-band">
+      <div class="container stats" id="stats"></div>
+    </section>
+
+    <!-- PRODUITS -->
+    <section id="produits" class="section products-sec">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">Catalogue</span>
+            <h2 class="reveal">Nos grades</h2>
+          </div>
+          <div class="filters reveal" id="filters">
+            <span class="pill-bg"></span>
+            <button class="active" data-filter="all">Tous</button>
+            <button data-filter="tsr">TSR</button>
+            <button data-filter="latex">Latex</button>
+            <button data-filter="rss">RSS</button>
+          </div>
+        </div>
+        <div class="products" id="products">
+          <div class="card sk-card"></div><div class="card sk-card"></div>
+        </div>
+        <p class="products-hint reveal"><svg class="ic"><use href="#i-info"/></svg> Touchez un produit pour voir sa fiche, ou sur <b>+</b> pour l'ajouter à votre demande de devis.</p>
+      </div>
+    </section>
+
+    <!-- SPECIFICATIONS -->
+    <section class="section specs-sec">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">Fiche technique</span>
+            <h2 class="reveal">Spécifications <br>ISO 2000</h2>
+          </div>
+          <p class="muted reveal head-note">Limites contractuelles pour chaque lot. Un certificat d'analyse accompagne chaque expédition.</p>
+        </div>
+        <div class="iso-wrap reveal"><table class="iso-table" id="iso-table"></table></div>
+        <div class="pack">
+          <div class="pack-item reveal"><svg class="ic"><use href="#i-box"/></svg><h3>Balle</h3><p>33,33 kg, 670 × 330 × 170 mm, filmée en polyéthylène à bas point de fusion.</p></div>
+          <div class="pack-item reveal"><svg class="ic"><use href="#i-grid"/></svg><h3>Unité de charge</h3><p>36 balles par palette ou caisse, soit 1,2 t.</p></div>
+          <div class="pack-item reveal"><svg class="ic"><use href="#i-ship"/></svg><h3>Conteneur</h3><p>Environ 20 t par conteneur de 20 pieds.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sectors-sec">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">Industries</span>
+            <h2 class="reveal">Pour qui <br>nous produisons</h2>
+          </div>
+          <p class="muted reveal head-note">Manufacturiers, transformateurs et négociants : notre caoutchouc entre dans les produits qui roulent, transmettent et protègent.</p>
+        </div>
+        <div class="sectors" id="sectors">
+          <a href="#produits" class="sector reveal" data-img="assets/img/tsr20.jpg"><b>01</b><h3>Pneumatique</h3><p>Pneus poids lourds, agricoles, tourisme et rechapage.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a href="#produits" class="sector reveal" data-img="assets/img/crepage.jpg"><b>02</b><h3>Caoutchouc technique</h3><p>Courroies, convoyeurs, tuyaux, joints et pièces moulées.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a href="#produits" class="sector reveal" data-img="assets/img/tsr10.jpg"><b>03</b><h3>Chaussure</h3><p>Semelles et produits en caoutchouc du quotidien.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a href="#produits" class="sector reveal" data-img="assets/img/export.jpg"><b>04</b><h3>Négoce &amp; export</h3><p>Lots conditionnés et certifiés, prêts à charger en conteneur.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="sector-float" id="sector-float"><img alt=""></div>
+    </section>
+
+    <!-- PROCESSUS -->
+    <section id="production" class="section process-sec">
+      <div class="container">
+        <div class="center-head">
+          <span class="eyebrow reveal">Production</span>
+          <h2 class="reveal">Quatre étapes, <em>une qualité mesurée</em></h2>
+        </div>
+        <div class="timeline" id="timeline">
+          <div class="tl-line"><span id="tl-fill"></span></div>
+          <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-leaf"/></svg></div><b>01</b><h3>Réception</h3><p>Pesée, contrôle et tri du coagulum des planteurs, puis trempage et pré-broyage.</p></div>
+          <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-drop"/></svg></div><b>02</b><h3>Lavage &amp; crêpage</h3><p>Lavage sous eau courante et trois à six passages en crêpeuse.</p></div>
+          <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-flame"/></svg></div><b>03</b><h3>Séchage</h3><p>Granulés séchés à 110–125 °C pendant 3 à 4 heures.</p></div>
+          <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-box"/></svg></div><b>04</b><h3>Pressage &amp; contrôle</h3><p>Balles de 33,33 kg, détection métal et certificat d'analyse par lot.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="cta-bg" data-speed="0.25" style="background-image:url(assets/img/export.jpg)"></div>
+      <div class="container cta-in">
+        <h2 class="reveal">Besoin d'un <br>approvisionnement régulier ?</h2>
+        <div class="reveal">
+          <p>Grade, volume, destination : décrivez votre besoin, nous revenons vers vous avec une offre et la fiche technique.</p>
+          <a href="#contact" class="btn btn-white magnetic">Demander un devis <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIE -->
+    <section id="galerie" class="section">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">Galerie</span>
+            <h2 class="reveal">De la plantation au conteneur</h2>
+          </div>
+          <p class="muted reveal head-note">Notre usine et notre caoutchouc en images.</p>
+        </div>
+        <div class="gallery" id="gallery"></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section faq-sec">
+      <div class="container faq-wrap">
+        <div>
+          <span class="eyebrow reveal">Questions fréquentes</span>
+          <h2 class="reveal">Vous vous <br><em>demandez…</em></h2>
+          <p class="muted reveal">Une autre question ? Écrivez-nous sur WhatsApp, nous répondons rapidement.</p>
+          <a class="btn btn-wa reveal" id="faq-wa" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg> Poser ma question</a>
+        </div>
+        <div class="faq" id="faq-list"></div>
+      </div>
+    </section>
+
+
+    <section id="contact" class="section contact-sec">
+      <div class="container contact">
+        <div class="contact-info">
+          <span class="eyebrow reveal">Contact</span>
+          <h2 class="reveal">Demandez <br>votre <em>devis</em></h2>
+          <p class="reveal">Indiquez le grade, la quantité et la destination, nous vous répondons rapidement.</p>
+          <ul class="info-list">
+            <li class="reveal"><svg class="ic"><use href="#i-phone"/></svg><div><small>Téléphone</small><a data-site-href="tel" data-site="phone"></a></div></li>
+            <li class="reveal"><svg class="ic"><use href="#i-mail"/></svg><div><small>E-mail</small><a data-site-href="mailto" data-site="email"></a></div></li>
+            <li class="reveal"><svg class="ic"><use href="#i-pin"/></svg><div><small>Adresse</small><span data-site="address"></span></div></li>
+            <li class="reveal"><svg class="ic"><use href="#i-clock"/></svg><div><small>Horaires</small><span data-site="hours"></span></div></li>
+          </ul>
+        </div>
+        <form id="quote" class="quote reveal" novalidate>
+          <div class="quote-head"><h3>Demande de devis</h3><span class="steps-ind"><i class="on"></i><i></i></span></div>
+
+          <div class="q-items">
+            <div class="q-items-head"><span>Produits demandés</span><button type="button" class="link" id="q-clear">Tout retirer</button></div>
+            <ul id="q-list"></ul>
+            <div class="q-add">
+              <label class="field"><select id="q-product"></select><span>Ajouter un produit</span></label>
+              <label class="field q-qty"><input id="q-qty" type="number" min="1" placeholder=" " value="20"><span>Quantité (t)</span></label>
+              <button type="button" class="btn btn-dark btn-square" id="q-add" aria-label="Ajouter"><svg class="ic"><use href="#i-plus"/></svg></button>
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="field"><input name="nom" required placeholder=" " autocomplete="organization"><span>Nom / Entreprise</span></label>
+            <label class="field"><input name="tel" type="tel" required placeholder=" " autocomplete="tel"><span>Téléphone</span></label>
+          </div>
+          <label class="field"><input name="lieu" placeholder=" "><span>Destination (pays / port de livraison)</span></label>
+          <label class="field"><textarea name="msg" rows="3" placeholder=" "></textarea><span>Message (optionnel)</span></label>
+          <p class="form-err" id="form-err" role="alert"></p>
+          <div class="row">
+            <button class="btn btn-wa" type="submit" data-via="whatsapp"><svg class="ic"><use href="#i-wa"/></svg> Envoyer par WhatsApp</button>
+            <button class="btn btn-dark" type="submit" data-via="email"><svg class="ic"><use href="#i-mail"/></svg> Envoyer par e-mail</button>
+          </div>
+        </form>
+      </div>
+      <div class="container map reveal"><iframe id="map" title="Localisation PURCA" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </section>
+
+
+
+    <!-- Fiche produit -->
+    <div id="pmodal" class="pmodal" aria-hidden="true">
+      <div class="pm-backdrop" data-close></div>
+      <article class="pm-panel" role="dialog" aria-modal="true" aria-labelledby="pm-title">
+        <button class="pm-close" data-close aria-label="Fermer">×</button>
+        <div class="pm-img"><img id="pm-img" alt=""><span class="pm-grain" id="pm-grain"></span></div>
+        <div class="pm-body">
+          <span class="badge" id="pm-cat"></span>
+          <h3 id="pm-title"></h3>
+          <p id="pm-desc"></p>
+          <dl class="pm-specs" id="pm-specs"></dl>
+          <div class="iso-wrap"><table class="iso-table iso-single" id="pm-iso"></table></div>
+          <div class="tags" id="pm-tags"></div>
+          <div class="pm-order">
+            <label class="num"><span>Quantité</span><input type="number" id="pm-qty" min="1" value="20"><i id="pm-unit">t</i></label>
+            <button class="btn" id="pm-add"><svg class="ic"><use href="#i-plus"/></svg> Ajouter au devis</button>
+          </div>
+          <a class="pm-wa" id="pm-wa" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg> Commander directement sur WhatsApp</a>
+        </div>
+      </article>
+    </div>

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "tsr-10",
+    "name": "Caoutchouc naturel TSR 10",
+    "category": "tsr",
+    "grade": "TSR 10",
+    "description": "Fabriqué à partir de coagulum sélectionné, avec plus de passages au crêpage et au lavage. Pour les applications où la propreté du caoutchouc compte.",
+    "usages": [
+      "Pneus tourisme",
+      "Courroies",
+      "Tuyaux et joints",
+      "Chaussures"
+    ],
+    "specs": {
+      "dirt": "0,08",
+      "ash": "0,60",
+      "nitrogen": "0,60",
+      "volatile": "0,80",
+      "po": "30",
+      "pri": "50"
+    },
+    "packaging": "Balles de 33,33 kg, palettes de 1,2 t",
+    "price": "",
+    "currency": "USD",
+    "unit": "tonne",
+    "image": "assets/img/tsr10.jpg",
+    "available": true,
+    "featured": true
+  },
+  {
+    "id": "tsr-20",
+    "name": "Caoutchouc naturel TSR 20",
+    "category": "tsr",
+    "grade": "TSR 20",
+    "description": "Le grade de référence du marché mondial du pneu. Bonne résistance mécanique et comportement régulier en mélange, à un coût compétitif.",
+    "usages": [
+      "Pneus poids lourds",
+      "Pneus agricoles",
+      "Rechapage",
+      "Caoutchouc industriel"
+    ],
+    "specs": {
+      "dirt": "0,16",
+      "ash": "0,80",
+      "nitrogen": "0,60",
+      "volatile": "0,80",
+      "po": "30",
+      "pri": "40"
+    },
+    "packaging": "Balles de 33,33 kg, palettes de 1,2 t",
+    "price": "",
+    "currency": "USD",
+    "unit": "tonne",
+    "image": "assets/img/tsr20.jpg",
+    "available": true,
+    "featured": true
+  }
+]

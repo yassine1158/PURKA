@@ -1,62 +1,82 @@
-# PURCA
+# PURCA — Site web
 
-Site vitrine de PURCA, producteur de caoutchouc naturel technique **TSR10** et **TSR20** en Côte d'Ivoire.
+Site vitrine de **PURCA**, producteur de caoutchouc naturel technique **TSR10** et **TSR20** en Côte d'Ivoire, avec un **espace administration** pour gérer les produits, les informations de contact, la galerie photo et la FAQ.
 
-Site statique (HTML, CSS, JavaScript), sans dépendance ni étape de build. Disponible en français et en anglais.
+Site 100 % statique : hébergement gratuit sur **GitHub Pages**, aucune base de données ni serveur.
+
+## Mise en ligne (GitHub Pages)
+
+1. Sur GitHub, ouvrir le dépôt → **Settings** → **Pages**.
+2. *Source* : **Deploy from a branch** → branche **main**, dossier **/ (root)** → **Save**.
+3. Après 1–2 minutes, le site est disponible sur `https://yassine1158.github.io/PURKA/`.
+4. (Optionnel) Nom de domaine personnalisé (ex. `purca.ci`) : même page, champ **Custom domain**.
+
+## Administration
+
+Adresse : `https://yassine1158.github.io/PURKA/admin/` (lien « Administration » en bas du site).
+
+La connexion se fait avec un **jeton GitHub** — seul le propriétaire du dépôt (ou un collaborateur) peut modifier le site.
+
+### Créer le jeton (une seule fois)
+1. GitHub → photo de profil → **Settings** → **Developer settings** → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**.
+2. *Repository access* : **Only select repositories** → `PURKA`.
+3. *Permissions* → *Repository permissions* → **Contents : Read and write**.
+4. Générer, copier le jeton (`github_pat_…`) et le coller dans la page d'administration.
+
+### Ce que l'on peut faire
+- **Produits** : ajouter / modifier / supprimer / réordonner (nom, catégorie TSR-latex-RSS, grade, spécifications ISO 2000, conditionnement, prix en USD, EUR ou FCFA ou « sur devis », unité, applications, photo, disponibilité).
+- **Informations** : textes d'accueil, à propos, téléphone, WhatsApp, e-mail, adresse, horaires, chiffres clés.
+- **Galerie** : ajouter, retirer et réordonner les photos.
+- **FAQ** : ajouter, modifier, supprimer et réordonner les questions.
+
+Chaque clic sur **Publier** crée un commit dans le dépôt ; GitHub Pages met le site à jour en 1–2 minutes. Les photos envoyées sont automatiquement redimensionnées.
+
+## Pages
+
+| Page | Fichier |
+|---|---|
+| Accueil | `index.html` |
+| L'entreprise | `entreprise.html` |
+| Produits (catalogue et tableau des spécifications ISO 2000) | `produits.html` |
+| Fiche d'un produit | `produit.html?id=<id du produit>` (une page par produit, générée automatiquement) |
+| Production | `production.html` |
+| Galerie | `galerie.html` |
+| FAQ | `faq.html` |
+| Contact & devis | `contact.html` |
+| Page d'erreur | `404.html` |
+| **Version téléphone (une seule page)** | `mobile.html` |
+
+### Ordinateur / téléphone
+
+- **Ordinateur et tablette** : site multi-pages (une page par rubrique et par produit).
+- **Téléphone** : site sur **une seule page** (`mobile.html`) ; le menu fait défiler jusqu'à chaque rubrique et les produits s'ouvrent dans un panneau.
+- La bascule est automatique : un téléphone qui ouvre `produits.html` arrive sur `mobile.html#produits`, un ordinateur qui ouvre `mobile.html#galerie` arrive sur `galerie.html`. Les liens partagés fonctionnent donc sur tous les appareils.
 
 ## Structure
 
 ```
-index.html            Page principale
-admin.html            Espace administration
-assets/css/style.css  Styles (thème clair et sombre)
-assets/css/admin.css  Styles de l'administration
-assets/js/config.js   Paramètres Supabase
-assets/js/main.js     Traduction FR/EN, menu mobile, formulaire de devis
-assets/js/admin.js    Tableau de bord administrateur
-assets/img/logo.svg   Logo
-supabase/schema.sql   Tables et règles d'accès de la base
+*.html                pages du site (générées, voir ci-dessous)
+assets/css, assets/js styles et effets (transitions entre pages, animations, curseur, lightbox…)
+assets/img            photos et logo
+data/products.json    catalogue des produits (modifié par l'admin)
+data/site.json        informations, chiffres clés, galerie et FAQ (modifiés par l'admin)
+admin/                espace administration
+tools/                gabarits des pages + générateur
 ```
 
-## Lancer en local
+### Modifier la structure des pages (développeurs)
 
-Ouvrir `index.html` dans un navigateur, ou :
+Le menu, l'en-tête et le pied de page sont communs à toutes les pages. Ils se trouvent dans `tools/partials/`, et le contenu propre à chaque page dans `tools/pages/`. Après une modification, régénérer les pages :
 
+```bash
+python3 tools/build.py
 ```
+
+Le contenu courant (produits, textes, photos, FAQ) se modifie depuis l'administration, sans toucher au code.
+
+## Aperçu local
+
+```bash
 python3 -m http.server 8000
+# puis ouvrir http://localhost:8000
 ```
-
-puis aller sur http://localhost:8000.
-
-## Mise en ligne
-
-Le site peut être publié avec GitHub Pages : Settings → Pages → Deploy from a branch → `main` / `root`.
-
-## Espace administration
-
-L'espace administration (`admin.html`) permet de :
-
-- consulter les demandes de devis envoyées depuis le site ;
-- suivre leur statut (nouvelle, en cours, traitée), les rechercher et les filtrer ;
-- exporter les demandes en CSV ;
-- modifier l'e-mail, le téléphone et l'adresse affichés sur le site.
-
-Les données sont stockées dans [Supabase](https://supabase.com) (offre gratuite suffisante).
-
-### Mise en place
-
-1. Créer un projet sur supabase.com.
-2. Dans **SQL Editor**, coller le contenu de `supabase/schema.sql`, remplacer `admin@exemple.com` par l'e-mail de l'administrateur, puis exécuter.
-3. Dans **Authentication → Users**, cliquer sur **Add user** et créer le compte administrateur avec ce même e-mail et un mot de passe.
-4. Dans **Authentication → Sign In / Providers**, désactiver **Allow new users to sign up**.
-5. Dans **Project Settings → API**, copier la **Project URL** et la clé **anon public** dans `assets/js/config.js`.
-6. Ouvrir `admin.html` sur le site et se connecter.
-
-Pour ajouter un autre administrateur : créer son compte (étape 3), puis exécuter
-`insert into public.admins (email) values ('son-email@exemple.com');`
-
-Tant que `config.js` est vide, le site fonctionne sans base : le formulaire ouvre la messagerie du visiteur.
-
-## À compléter
-
-Les coordonnées de la section Contact de `index.html` (e-mail, téléphone, adresse) sont des valeurs par défaut. Une fois Supabase configuré, elles se modifient depuis l'espace administration.

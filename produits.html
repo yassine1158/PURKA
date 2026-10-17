@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nos produits — Caoutchouc TSR10 et TSR20 | PURCA</title>
+  <meta name="description" content="Caoutchouc naturel technique PURCA : TSR10 et TSR20 conformes ISO 2000, spécifications, conditionnement en balles de 33,33 kg. Demandez votre devis.">
+  <meta name="theme-color" content="#101512">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PURCA">
+  <meta property="og:title" content="Nos produits — Caoutchouc TSR10 et TSR20 | PURCA">
+  <meta property="og:description" content="Caoutchouc naturel technique PURCA : TSR10 et TSR20 conformes ISO 2000, spécifications, conditionnement en balles de 33,33 kg. Demandez votre devis.">
+  <meta property="og:image" content="assets/img/balles.jpg">
+  <link rel="icon" href="assets/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    /* Téléphone : version une page (mobile.html) — ordinateur : version multi-pages */
+    (function(){
+      var page="produits", mobile=matchMedia("(max-width: 767px), (pointer: coarse) and (max-height: 500px)").matches;
+      var sections={accueil:"",entreprise:"#entreprise",produits:"#produits",production:"#production",galerie:"#galerie",faq:"#faq",contact:"#contact"};
+      if(page==="404") return;
+      if(mobile && page!=="onepage"){
+        var isProduct=/produit\.html$/.test(location.pathname);
+        location.replace("mobile.html"+(isProduct?location.search:"")+(sections[page]||""));
+      } else if(!mobile && page==="onepage"){
+        var id=new URLSearchParams(location.search).get("id"), h=location.hash.slice(1);
+        var files={entreprise:"entreprise.html",produits:"produits.html",production:"production.html",galerie:"galerie.html",faq:"faq.html",contact:"contact.html"};
+        location.replace(id?"produit.html?id="+encodeURIComponent(id):(files[h]||"index.html"));
+      }
+    })();
+    try{if(sessionStorage.getItem("purca_seen"))document.documentElement.classList.add("seen")}catch(e){}
+  </script>
+</head>
+<body data-page="produits">
+  <!-- Préchargement (1re visite) / transition entre pages -->
+  <div id="preloader">
+    <img src="assets/img/logo-light.png" alt="PURCA">
+    <div class="pl-count"><span id="pl-num">0</span>%</div>
+    <div class="pl-curtain"><i></i><i></i><i></i></div>
+  </div>
+  <div id="leave" aria-hidden="true"><i></i><i></i><i></i><img src="assets/img/logo-light.png" alt=""></div>
+  <div id="progress"></div>
+  <div id="cursor" aria-hidden="true"><span class="c-dot"></span><span class="c-ring"><em></em></span></div>
+
+  <div class="topbar">
+    <div class="container topbar-in">
+      <span><svg class="ic"><use href="#i-clock"/></svg><span data-site="hours"></span></span>
+      <span class="tb-right">
+        <a data-site-href="tel" data-site="phone"></a>
+        <a data-site-href="mailto" data-site="email"></a>
+      </span>
+    </div>
+  </div>
+
+  <header id="header">
+    <div class="container nav">
+      <a href="index.html" class="brand" aria-label="PURCA — accueil">
+        <img class="logo-light" src="assets/img/logo-light.png" alt="PURCA">
+        <img class="logo-color" src="assets/img/logo.png" alt="">
+      </a>
+      <nav id="menu">
+        <a href="index.html" data-nav="accueil">Accueil</a>
+        <a href="entreprise.html" data-nav="entreprise">Entreprise</a>
+        <a href="produits.html" data-nav="produits">Produits</a>
+        <a href="production.html" data-nav="production">Production</a>
+        <a href="galerie.html" data-nav="galerie">Galerie</a>
+        <a href="contact.html" data-nav="contact">Contact</a>
+        <div class="menu-foot"><a data-site-href="tel" data-site="phone"></a><a data-site-href="mailto" data-site="email"></a></div>
+      </nav>
+      <a href="contact.html#quote" class="basket-btn" id="basket-btn" aria-label="Ma demande de devis"><svg class="ic"><use href="#i-list"/></svg><b id="basket-count">0</b></a>
+      <a href="contact.html#quote" class="btn btn-sm nav-cta magnetic">Demander un devis <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <button id="burger" aria-label="Menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="ph-bg" style="background-image:url(assets/img/balles.jpg)"></div>
+      <div class="grain"></div>
+      <div class="container ph-in">
+        <nav class="crumbs split-up" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span>Produits</span></nav>
+        <h1 data-split>Nos produits</h1>
+        <p class="split-up">Caoutchouc naturel technique TSR10 et TSR20, produit en Côte d'Ivoire et contrôlé lot par lot selon la norme ISO 2000.</p>
+      </div>
+      <span class="ph-num">02</span>
+    </section>
+
+    <section class="section products-sec">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">Catalogue</span>
+            <h2 class="reveal" id="cat-title">Tous les produits</h2>
+          </div>
+          <div class="filters reveal" id="filters">
+            <span class="pill-bg"></span>
+            <button class="active" data-filter="all">Tous</button>
+            <button data-filter="tsr">TSR</button>
+            <button data-filter="latex">Latex</button>
+            <button data-filter="rss">RSS</button>
+          </div>
+        </div>
+        <div class="products" id="products">
+          <div class="card sk-card"></div><div class="card sk-card"></div>
+        </div>
+        <p class="products-hint reveal"><svg class="ic"><use href="#i-info"/></svg> Cliquez sur un produit pour voir sa fiche, ou sur <b>+</b> pour l'ajouter à votre demande de devis.</p>
+      </div>
+    </section>
+
+    <section class="section specs-sec">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">Fiche technique</span>
+            <h2 class="reveal">Spécifications <br>ISO 2000</h2>
+          </div>
+          <p class="muted reveal head-note">Limites contractuelles pour chaque lot. Un certificat d'analyse accompagne chaque expédition.</p>
+        </div>
+        <div class="iso-wrap reveal"><table class="iso-table" id="iso-table"></table></div>
+        <div class="pack">
+          <div class="pack-item reveal"><svg class="ic"><use href="#i-box"/></svg><h3>Balle</h3><p>33,33 kg (35 kg sur demande), 670 × 330 × 170 mm, filmée en polyéthylène à bas point de fusion, compatible mélangeur interne.</p></div>
+          <div class="pack-item reveal"><svg class="ic"><use href="#i-grid"/></svg><h3>Unité de charge</h3><p>36 balles par palette ou caisse, soit 1,2 t (1,26 t pour les balles de 35 kg).</p></div>
+          <div class="pack-item reveal"><svg class="ic"><use href="#i-ship"/></svg><h3>Conteneur</h3><p>Environ 20 t par conteneur de 20 pieds, selon le type de palette et vos exigences.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="promo-band">
+      <div class="container cp-in">
+        <div class="cp-icon reveal"><svg class="ic"><use href="#i-list"/></svg></div>
+        <div class="reveal">
+          <h2>Un besoin particulier ?</h2>
+          <p>Volume régulier, conditionnement spécifique ou destination lointaine : décrivez votre besoin, nous vous conseillons.</p>
+        </div>
+        <a href="contact.html#quote" class="btn btn-white magnetic reveal">Demander un devis <svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="contact.html#quote" class="big-cta">
+      <span class="bc-track"><span>Parlons de votre besoin</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre besoin</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre besoin</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre besoin</span><svg class="ic"><use href="#i-arrow"/></svg></span>
+    </a>
+    <div class="container foot">
+      <div class="foot-brand">
+        <img src="assets/img/logo-light.png" alt="PURCA">
+        <p>Production de caoutchouc naturel technique TSR10 et TSR20 en Côte d'Ivoire, pour l'industrie du pneumatique et du caoutchouc.</p>
+      </div>
+      <div><h4>Navigation</h4><a href="entreprise.html">Entreprise</a><a href="produits.html">Produits</a><a href="production.html">Production</a><a href="galerie.html">Galerie</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div>
+      <div><h4>Produits</h4><div id="foot-products"></div></div>
+      <div><h4>Contact</h4><a data-site-href="tel" data-site="phone"></a><a data-site-href="mailto" data-site="email"></a><span data-site="address"></span><span data-site="hours"></span></div>
+    </div>
+    <div class="container foot-bottom">
+      <span>© <span id="year"></span> PURCA — Caoutchouc naturel de Côte d'Ivoire</span>
+      <a href="admin/" class="admin-link" data-no-transition>Administration</a>
+    </div>
+    <div class="foot-flag"><i></i><i></i><i></i></div>
+  </footer>
+
+  <a id="wa" class="wa" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ic"><use href="#i-wa"/></svg></a>
+  <button id="totop" aria-label="Haut de page"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18"/></svg><span>↑</span></button>
+  <div id="lightbox"><button class="lb-close" aria-label="Fermer">×</button><button class="lb-prev" aria-label="Précédent">‹</button><img alt=""><span class="lb-count"></span><button class="lb-next" aria-label="Suivant">›</button></div>
+  <div id="toast" role="status"></div>
+
+  <!-- Icônes -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M6 3.5h12v17H6z M9 8h6M9 12h6M9 16h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v5M12 7.5v.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-mountain" viewBox="0 0 24 24"><path d="M3 20 9.5 8l4 6.5L16 11l5 9z M8 12.5l1.5 1.5 1.5-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M12 2.8 20 6v6c0 4.6-3.3 8-8 9.2C7.3 20 4 16.6 4 12V6z M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6.5h11v9h-11zM13.5 9.5h4l3 3.5v2.5h-7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="6.5" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><path d="M3 5h18M3 12h18M3 19h18M7 3v18M12 3v18M17 3v18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-clock2" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9M12 7v5l3 2M17 3l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-handshake" viewBox="0 0 24 24"><path d="M2.5 11 6 7.5l3 1 3-2 3.5 1 3.5-1L21.5 11M5 12l4.5 4.5a1.5 1.5 0 0 0 2.1 0L17 11M8 15l-1.5 1.5M11 17.5l-1 1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-helmet" viewBox="0 0 24 24"><path d="M3 17h18M4.5 17a7.5 7.5 0 0 1 15 0M10 9.8V6h4v3.8M12 6v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.8 6.8l1.4-2.2 4.3 1.7V19a1.9 1.9 0 0 1-2 1.9A16.5 16.5 0 0 1 3.1 5.5 1.9 1.9 0 0 1 5 3.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 5.5h18v13H3z M3.5 6l8.5 7 8.5-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s-7-6.2-7-11.5a7 7 0 0 1 14 0c0 5.3-7 11.5-7 11.5z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7a10.7 10.7 0 0 1-5.5-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.4 6.4 0 0 0 1.4 3.4 14.6 14.6 0 0 0 5.6 4.9c2 .9 2.9.9 3.9.8a3.3 3.3 0 0 0 2.2-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.2-.3-.3-.6-.4z"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15M5 19l8-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.6 6 11a6 6 0 0 1-12 0c0-4.4 6-11 6-11z M9.5 14.5a2.6 2.6 0 0 0 2.5 2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9.5 3h5M10 3v6l-5.2 9.2A1.9 1.9 0 0 0 6.5 21h11a1.9 1.9 0 0 0 1.7-2.8L14 9V3M7.3 15h9.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M3.5 7.5 12 3.5l8.5 4v9L12 20.5l-8.5-4zM3.5 7.5 12 11.5l8.5-4M12 11.5v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-ship" viewBox="0 0 24 24"><path d="M3 16.5 4.5 20h15l1.5-3.5zM5 16.5V12h14v4.5M8 12V8h8v4M11 8V5h2v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 21a6.5 6.5 0 0 1-6.5-6.5C5.5 10 9 8 9.5 4c3 2 4 4.5 3.8 7 1-.8 1.7-2 1.9-3.2 2 1.8 3.3 4.2 3.3 6.7A6.5 6.5 0 0 1 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

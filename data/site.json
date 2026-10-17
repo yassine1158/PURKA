@@ -1,0 +1,74 @@
+{
+  "company": "PURCA",
+  "tagline": "Caoutchouc naturel · Côte d'Ivoire",
+  "heroTitle": "Le caoutchouc naturel TSR de Côte d'Ivoire",
+  "heroText": "PURCA transforme le coagulum des planteurs d'hévéa en caoutchouc technique TSR10 et TSR20 : lavé, séché, pressé en balles et analysé lot par lot selon la norme ISO 2000.",
+  "about": "Installée en Côte d'Ivoire, premier producteur africain de caoutchouc naturel, PURCA transforme le coagulum collecté auprès des planteurs dans sa propre usine. Chaque lot est contrôlé au laboratoire avant d'être pressé en balles et expédié aux manufacturiers du pneumatique et de l'industrie du caoutchouc.",
+  "stats": [
+    {
+      "value": 2,
+      "suffix": "",
+      "label": "Grades produits : TSR10 et TSR20"
+    },
+    {
+      "value": 33,
+      "suffix": ",33 kg",
+      "label": "Par balle, filmée et détectée métal"
+    },
+    {
+      "value": 6,
+      "suffix": "",
+      "label": "Paramètres ISO 2000 contrôlés"
+    },
+    {
+      "value": 100,
+      "suffix": "%",
+      "label": "Des lots analysés avant expédition"
+    }
+  ],
+  "phone": "+225 00 00 00 00 00",
+  "whatsapp": "2250000000000",
+  "email": "contact@purca.ci",
+  "address": "Côte d'Ivoire",
+  "hours": "Lundi – Samedi : 7h00 – 18h00",
+  "mapQuery": "Côte d'Ivoire",
+  "gallery": [
+    "assets/img/plantation.jpg",
+    "assets/img/coagulum.jpg",
+    "assets/img/crepage.jpg",
+    "assets/img/sechage.jpg",
+    "assets/img/balles.jpg",
+    "assets/img/laboratoire.jpg",
+    "assets/img/export.jpg"
+  ],
+  "faq": [
+    {
+      "q": "Quels grades de caoutchouc produisez-vous ?",
+      "a": "Nous produisons du caoutchouc naturel technique TSR10 et TSR20, conforme à la norme ISO 2000. D'autres grades sont à l'étude."
+    },
+    {
+      "q": "Quelle est la différence entre le TSR10 et le TSR20 ?",
+      "a": "Les deux viennent du même procédé. Le TSR10 est fabriqué à partir d'une matière première plus propre et reçoit plus de lavage : impuretés 0,08 % maximum et PRI 50 minimum, contre 0,16 % et 40 pour le TSR20. Le TSR20 est le grade de référence pour les pneus poids lourds."
+    },
+    {
+      "q": "Comment le caoutchouc est-il conditionné ?",
+      "a": "En balles de 33,33 kg (670 × 330 × 170 mm) filmées en polyéthylène à bas point de fusion, qui passe directement au mélangeur. Les balles sont regroupées par 36 sur palette ou en caisse, soit 1,2 tonne, et environ 20 tonnes par conteneur de 20 pieds."
+    },
+    {
+      "q": "Fournissez-vous un certificat d'analyse ?",
+      "a": "Oui. Chaque lot est échantillonné et analysé dans notre laboratoire sur les six paramètres de la norme ISO 2000 (impuretés, cendres, azote, matières volatiles, plasticité P0 et PRI). Le certificat d'analyse accompagne chaque expédition."
+    },
+    {
+      "q": "Quel volume minimum pour une commande ?",
+      "a": "Le volume dépend de la destination et du conditionnement. Indiquez votre besoin dans la demande de devis : nous vous confirmons les conditions, les délais et le prix."
+    },
+    {
+      "q": "Je suis planteur ou coopérative : achetez-vous le coagulum ?",
+      "a": "Contactez-nous par téléphone ou WhatsApp pour connaître les conditions d'achat du coagulum et les points de collecte."
+    },
+    {
+      "q": "Comment passer commande ?",
+      "a": "Ajoutez le grade souhaité à votre demande de devis (depuis le catalogue ou la fiche produit), indiquez la quantité et la destination, puis envoyez la demande par WhatsApp ou par e-mail."
+    }
+  ]
+}

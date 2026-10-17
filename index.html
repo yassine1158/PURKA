@@ -2,327 +2,274 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>PURCA | Caoutchouc naturel TSR10 &amp; TSR20</title>
-  <meta name="description" content="PURCA produit en Côte d'Ivoire du caoutchouc naturel technique (TSR10 et TSR20) conforme à la norme ISO 2000, pour l'industrie du pneumatique et du caoutchouc.">
-  <meta name="theme-color" content="#02A242">
-  <meta property="og:title" content="PURCA | Caoutchouc naturel TSR10 & TSR20">
-  <meta property="og:description" content="Caoutchouc naturel de Côte d'Ivoire, spécifié techniquement et contrôlé lot par lot selon ISO 2000.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PURCA — Caoutchouc naturel TSR10 et TSR20 | Côte d&#x27;Ivoire</title>
+  <meta name="description" content="PURCA produit en Côte d&#x27;Ivoire du caoutchouc naturel technique TSR10 et TSR20 conforme ISO 2000, en balles de 33,33 kg. Devis rapide par WhatsApp.">
+  <meta name="theme-color" content="#101512">
   <meta property="og:type" content="website">
-  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <meta property="og:site_name" content="PURCA">
+  <meta property="og:title" content="PURCA — Caoutchouc naturel TSR10 et TSR20 | Côte d&#x27;Ivoire">
+  <meta property="og:description" content="PURCA produit en Côte d&#x27;Ivoire du caoutchouc naturel technique TSR10 et TSR20 conforme ISO 2000, en balles de 33,33 kg. Devis rapide par WhatsApp.">
+  <meta property="og:image" content="assets/img/balles.jpg">
+  <link rel="icon" href="assets/img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500;62..125,700;62..125,800;62..125,900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    /* Téléphone : version une page (mobile.html) — ordinateur : version multi-pages */
+    (function(){
+      var page="accueil", mobile=matchMedia("(max-width: 767px), (pointer: coarse) and (max-height: 500px)").matches;
+      var sections={accueil:"",entreprise:"#entreprise",produits:"#produits",production:"#production",galerie:"#galerie",faq:"#faq",contact:"#contact"};
+      if(page==="404") return;
+      if(mobile && page!=="onepage"){
+        var isProduct=/produit\.html$/.test(location.pathname);
+        location.replace("mobile.html"+(isProduct?location.search:"")+(sections[page]||""));
+      } else if(!mobile && page==="onepage"){
+        var id=new URLSearchParams(location.search).get("id"), h=location.hash.slice(1);
+        var files={entreprise:"entreprise.html",produits:"produits.html",production:"production.html",galerie:"galerie.html",faq:"faq.html",contact:"contact.html"};
+        location.replace(id?"produit.html?id="+encodeURIComponent(id):(files[h]||"index.html"));
+      }
+    })();
+    try{if(sessionStorage.getItem("purca_seen"))document.documentElement.classList.add("seen")}catch(e){}
+  </script>
 </head>
-<body>
-  <a class="skip" href="#main" data-i18n="skip">Aller au contenu</a>
+<body data-page="accueil">
+  <!-- Préchargement (1re visite) / transition entre pages -->
+  <div id="preloader">
+    <img src="assets/img/logo-light.png" alt="PURCA">
+    <div class="pl-count"><span id="pl-num">0</span>%</div>
+    <div class="pl-curtain"><i></i><i></i><i></i></div>
+  </div>
+  <div id="leave" aria-hidden="true"><i></i><i></i><i></i><img src="assets/img/logo-light.png" alt=""></div>
+  <div id="progress"></div>
+  <div id="cursor" aria-hidden="true"><span class="c-dot"></span><span class="c-ring"><em></em></span></div>
 
-  <header class="site-header" id="top">
-    <div class="wrap header-inner">
-      <a class="brand" href="#top" aria-label="PURCA, accueil">
-        <img src="assets/img/logo.svg" alt="" width="40" height="40">
-        <span class="brand-name">PURCA</span>
+  <div class="topbar">
+    <div class="container topbar-in">
+      <span><svg class="ic"><use href="#i-clock"/></svg><span data-site="hours"></span></span>
+      <span class="tb-right">
+        <a data-site-href="tel" data-site="phone"></a>
+        <a data-site-href="mailto" data-site="email"></a>
+      </span>
+    </div>
+  </div>
+
+  <header id="header">
+    <div class="container nav">
+      <a href="index.html" class="brand" aria-label="PURCA — accueil">
+        <img class="logo-light" src="assets/img/logo-light.png" alt="PURCA">
+        <img class="logo-color" src="assets/img/logo.png" alt="">
       </a>
-      <nav class="nav" id="nav" aria-label="Navigation principale">
-        <a href="#produits" data-i18n="nav.products">Produits</a>
-        <a href="#specifications" data-i18n="nav.specs">Spécifications</a>
-        <a href="#procede" data-i18n="nav.process">Procédé</a>
-        <a href="#qualite" data-i18n="nav.quality">Qualité</a>
-        <a href="#contact" class="nav-cta" data-i18n="nav.quote">Demander un devis</a>
+      <nav id="menu">
+        <a href="index.html" data-nav="accueil">Accueil</a>
+        <a href="entreprise.html" data-nav="entreprise">Entreprise</a>
+        <a href="produits.html" data-nav="produits">Produits</a>
+        <a href="production.html" data-nav="production">Production</a>
+        <a href="galerie.html" data-nav="galerie">Galerie</a>
+        <a href="contact.html" data-nav="contact">Contact</a>
+        <div class="menu-foot"><a data-site-href="tel" data-site="phone"></a><a data-site-href="mailto" data-site="email"></a></div>
       </nav>
-      <div class="header-tools">
-        <button class="lang" id="lang-toggle" type="button" aria-label="Switch to English">EN</button>
-        <button class="menu" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav">
-          <span class="sr" data-i18n="menu">Menu</span>
-          <span class="menu-bars" aria-hidden="true"></span>
-        </button>
-      </div>
+      <a href="contact.html#quote" class="basket-btn" id="basket-btn" aria-label="Ma demande de devis"><svg class="ic"><use href="#i-list"/></svg><b id="basket-count">0</b></a>
+      <a href="contact.html#quote" class="btn btn-sm nav-cta magnetic">Demander un devis <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <button id="burger" aria-label="Menu"><span></span><span></span></button>
     </div>
   </header>
 
   <main id="main">
-    <!-- Hero -->
     <section class="hero">
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow" data-i18n="hero.eyebrow">Côte d'Ivoire · Caoutchouc naturel · ISO 2000</p>
-          <h1 data-i18n="hero.title">Des balles TSR propres, régulières, prêtes pour vos mélangeurs.</h1>
-          <p class="lead" data-i18n="hero.lead">Basée en Côte d'Ivoire, premier producteur africain de caoutchouc naturel, PURCA transforme le coagulum des plantations d'hévéa en caoutchouc technique TSR10 et TSR20. Chaque lot est lavé, séché, pressé et analysé en laboratoire avant expédition.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact" data-i18n="hero.cta">Demander un devis</a>
-            <a class="btn btn-ghost" href="#specifications" data-i18n="hero.cta2">Voir les spécifications</a>
+      <div class="hero-media">
+        <div class="slide active" style="background-image:url(assets/img/plantation.jpg)"></div>
+        <div class="slide" style="background-image:url(assets/img/crepage.jpg)"></div>
+        <div class="slide" style="background-image:url(assets/img/sechage.jpg)"></div>
+        <div class="slide" style="background-image:url(assets/img/balles.jpg)"></div>
+      </div>
+      <canvas id="dust"></canvas>
+      <div class="hero-shade"></div>
+      <div class="grain"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="kicker split-up"><i class="flag"><b></b><b></b><b></b></i><span data-site="tagline">Caoutchouc naturel · Côte d'Ivoire</span></span>
+          <h1 class="hero-title" data-site="heroTitle" data-split>Le caoutchouc naturel TSR de Côte d'Ivoire</h1>
+          <p class="hero-text split-up" data-site="heroText"></p>
+          <div class="hero-actions split-up">
+            <a href="produits.html" class="btn magnetic">Voir nos produits <svg class="ic"><use href="#i-arrow"/></svg></a>
+            <a href="contact.html#quote" class="btn btn-outline magnetic">Demander un devis</a>
           </div>
         </div>
-
-        <figure class="bale" aria-label="Balle de caoutchouc TSR 20, 33,33 kg">
-          <svg viewBox="0 0 420 340" class="bale-svg" aria-hidden="true">
-            <polygon class="bale-top" points="60,110 250,50 380,100 190,160"/>
-            <polygon class="bale-left" points="60,110 190,160 190,290 60,240"/>
-            <polygon class="bale-right" points="190,160 380,100 380,230 190,290"/>
-            <g class="bale-crumb">
-              <circle cx="120" cy="170" r="3"/><circle cx="150" cy="200" r="2.5"/><circle cx="98" cy="215" r="2"/>
-              <circle cx="160" cy="245" r="3"/><circle cx="130" cy="230" r="2"/><circle cx="85" cy="160" r="2.5"/>
-              <circle cx="170" cy="180" r="2"/><circle cx="110" cy="255" r="2.5"/>
-            </g>
-            <polyline class="bale-film" points="60,110 250,50 380,100"/>
-          </svg>
-          <figcaption class="tag">
-            <span class="tag-row tag-head"><span>PURCA</span><span class="tag-grade" id="tag-grade">TSR 20</span></span>
-            <span class="tag-row"><span data-i18n="tag.weight">Poids net</span><span class="mono">33,33 kg</span></span>
-            <span class="tag-row"><span data-i18n="tag.size">Format</span><span class="mono">670 × 330 × 170 mm</span></span>
-            <span class="tag-row"><span data-i18n="tag.film">Film</span><span class="mono">PE, bas point de fusion</span></span>
-          </figcaption>
-        </figure>
+        <aside class="hero-card split-up">
+          <div class="hc-head"><span class="live"></span>Production en cours</div>
+          <ul id="hero-products"><li class="sk"></li><li class="sk"></li><li class="sk"></li></ul>
+          <a href="contact.html#quote" class="hc-link">Commander maintenant <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </aside>
       </div>
 
-      <div class="wrap facts">
-        <div class="fact"><span class="fact-num">2</span><span class="fact-lbl" data-i18n="facts.grades">grades en production : TSR10 et TSR20</span></div>
-        <div class="fact"><span class="fact-num">33,33<small>kg</small></span><span class="fact-lbl" data-i18n="facts.bale">par balle, filmée et détectée métal</span></div>
-        <div class="fact"><span class="fact-num">1,2<small>t</small></span><span class="fact-lbl" data-i18n="facts.pallet">par palette ou caisse de 36 balles</span></div>
-        <div class="fact"><span class="fact-num">100<small>%</small></span><span class="fact-lbl" data-i18n="facts.lots">des lots analysés avant expédition</span></div>
+      <div class="hero-bottom container">
+        <div class="slide-nav" id="slide-nav"></div>
+        <a href="#apropos" class="scroll-cue">Défiler <span></span></a>
       </div>
     </section>
 
-    <!-- Products -->
-    <section class="section" id="produits">
-      <div class="wrap">
-        <header class="section-head">
-          <p class="eyebrow" data-i18n="products.eyebrow">Nos produits</p>
-          <h2 data-i18n="products.title">Deux grades, un même niveau d'exigence</h2>
-          <p class="section-lead" data-i18n="products.lead">Le grade dépend de la propreté de la matière première et de l'intensité du lavage. Les deux sont produits sur la même ligne, avec les mêmes contrôles.</p>
-        </header>
+    <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
 
-        <div class="products">
-          <article class="product">
-            <div class="product-top">
-              <h3 class="grade">TSR<span>10</span></h3>
-              <span class="badge" data-i18n="p10.badge">Haute propreté</span>
-            </div>
-            <p data-i18n="p10.desc">Fabriqué à partir de fonds de tasse sélectionnés, avec plus de passages au crêpage et au lavage. Pour les applications où la teneur en impuretés compte.</p>
-            <dl class="mini-spec">
-              <div><dt data-i18n="spec.dirt">Impuretés max.</dt><dd class="mono">0,08 %</dd></div>
-              <div><dt data-i18n="spec.ash">Cendres max.</dt><dd class="mono">0,60 %</dd></div>
-              <div><dt>PRI min.</dt><dd class="mono">50</dd></div>
-            </dl>
-            <h4 data-i18n="uses">Applications</h4>
-            <ul class="uses">
-              <li data-i18n="p10.u1">Pneumatiques tourisme et composants techniques</li>
-              <li data-i18n="p10.u2">Courroies de transmission et convoyeurs</li>
-              <li data-i18n="p10.u3">Tuyaux, joints et pièces moulées</li>
-              <li data-i18n="p10.u4">Semelles et chaussures</li>
-            </ul>
-          </article>
-
-          <article class="product product-alt">
-            <div class="product-top">
-              <h3 class="grade">TSR<span>20</span></h3>
-              <span class="badge" data-i18n="p20.badge">Standard pneumatique</span>
-            </div>
-            <p data-i18n="p20.desc">Le grade de référence du marché mondial du pneu. Bonne résistance mécanique et comportement régulier en mélange, à un coût compétitif.</p>
-            <dl class="mini-spec">
-              <div><dt data-i18n="spec.dirt">Impuretés max.</dt><dd class="mono">0,16 %</dd></div>
-              <div><dt data-i18n="spec.ash">Cendres max.</dt><dd class="mono">0,80 %</dd></div>
-              <div><dt>PRI min.</dt><dd class="mono">40</dd></div>
-            </dl>
-            <h4 data-i18n="uses">Applications</h4>
-            <ul class="uses">
-              <li data-i18n="p20.u1">Pneus poids lourds, bus et agricoles</li>
-              <li data-i18n="p20.u2">Bandes de roulement et carcasses</li>
-              <li data-i18n="p20.u3">Produits caoutchouc d'usage général</li>
-              <li data-i18n="p20.u4">Rechapage</li>
-            </ul>
-          </article>
+    <section id="apropos" class="section about-sec">
+      <span class="bg-word" data-speed="-0.15">HÉVÉA</span>
+      <div class="container about">
+        <div class="about-media">
+          <div class="mask-reveal main-img"><img src="assets/img/plantation.jpg" alt="Plantation d'hévéas et saignée" loading="lazy"></div>
+          <div class="mask-reveal sub-img" data-speed="0.08"><img src="assets/img/coagulum.jpg" alt="Coagulum de caoutchouc à la réception" loading="lazy"></div>
+          <div class="seal">
+            <svg viewBox="0 0 200 200"><defs><path id="circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+              <text font-size="12" font-weight="700"><textPath href="#circ" textLength="486" lengthAdjust="spacing">CAOUTCHOUC NATUREL • CÔTE D'IVOIRE • PURCA • </textPath></text></svg>
+            <img src="assets/img/mark.png" alt="">
+          </div>
         </div>
-        <p class="note" data-i18n="products.note">D'autres grades (TSR5, TSR CV, TSR L) sont à l'étude.</p>
-      </div>
-    </section>
-
-    <!-- Specifications -->
-    <section class="section section-tint" id="specifications">
-      <div class="wrap">
-        <header class="section-head">
-          <p class="eyebrow" data-i18n="specs.eyebrow">Fiche technique</p>
-          <h2 data-i18n="specs.title">Spécifications selon ISO 2000</h2>
-          <p class="section-lead" data-i18n="specs.lead">Limites contractuelles pour chaque lot. Un certificat d'analyse accompagne chaque expédition.</p>
-        </header>
-
-        <div class="table-scroll">
-          <table class="spec-table">
-            <thead>
-              <tr>
-                <th scope="col" data-i18n="t.param">Paramètre</th>
-                <th scope="col" data-i18n="t.method">Méthode</th>
-                <th scope="col" class="num">TSR10</th>
-                <th scope="col" class="num">TSR20</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row" data-i18n="t.dirt">Impuretés retenues sur tamis 45 µm, max. (%)</th><td class="mono">ISO 249</td><td class="num">0,08</td><td class="num">0,16</td></tr>
-              <tr><th scope="row" data-i18n="t.ash">Cendres, max. (%)</th><td class="mono">ISO 247</td><td class="num">0,60</td><td class="num">0,80</td></tr>
-              <tr><th scope="row" data-i18n="t.n">Azote, max. (%)</th><td class="mono">ISO 1656</td><td class="num">0,60</td><td class="num">0,60</td></tr>
-              <tr><th scope="row" data-i18n="t.vm">Matières volatiles, max. (%)</th><td class="mono">ISO 248</td><td class="num">0,80</td><td class="num">0,80</td></tr>
-              <tr><th scope="row" data-i18n="t.po">Plasticité initiale Wallace P<sub>0</sub>, min.</th><td class="mono">ISO 2007</td><td class="num">30</td><td class="num">30</td></tr>
-              <tr><th scope="row" data-i18n="t.pri">Indice de rétention de plasticité (PRI), min.</th><td class="mono">ISO 2930</td><td class="num">50</td><td class="num">40</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="pack">
-          <div class="pack-item">
-            <h3 data-i18n="pack.bale">Balle</h3>
-            <p data-i18n="pack.bale.d">33,33 kg (35 kg sur demande), 670 × 330 × 170 mm, filmée PE à bas point de fusion, compatible mélangeur interne.</p>
+        <div class="about-text">
+          <span class="eyebrow reveal">L'entreprise</span>
+          <h2 class="reveal">Du coagulum <br>à la <em>balle certifiée.</em></h2>
+          <p class="lead reveal" data-site="about"></p>
+          <div class="features">
+            <div class="feat reveal"><svg class="ic"><use href="#i-gear"/></svg><div><h4>Usine intégrée</h4><p>Lavage, crêpage, séchage et pressage sur un même site.</p></div></div>
+            <div class="feat reveal"><svg class="ic"><use href="#i-flask"/></svg><div><h4>Laboratoire interne</h4><p>Chaque lot analysé selon ISO 2000.</p></div></div>
           </div>
-          <div class="pack-item">
-            <h3 data-i18n="pack.unit">Unité de charge</h3>
-            <p data-i18n="pack.unit.d">36 balles par palette ou caisse, soit 1,2 t. Version 1,26 t pour les balles de 35 kg.</p>
-          </div>
-          <div class="pack-item">
-            <h3 data-i18n="pack.cont">Conteneur</h3>
-            <p data-i18n="pack.cont.d">Environ 20 t par conteneur 20 pieds, selon le type de palette et les exigences du client. Expédition au départ de la Côte d'Ivoire.</p>
-          </div>
+          <a href="entreprise.html" class="more-link reveal">Découvrir l'entreprise <svg class="ic"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
     </section>
 
-    <!-- Process -->
-    <section class="section" id="procede">
-      <div class="wrap">
-        <header class="section-head">
-          <p class="eyebrow" data-i18n="process.eyebrow">Procédé de fabrication</p>
-          <h2 data-i18n="process.title">Du fond de tasse à la balle certifiée</h2>
-          <p class="section-lead" data-i18n="process.lead">Huit étapes, dans l'ordre où la matière traverse l'usine.</p>
-        </header>
+    <section class="stats-band"><div class="container stats" id="stats"></div></section>
 
-        <ol class="process">
-          <li>
-            <h3 data-i18n="s1.t">Réception et tri</h3>
-            <p data-i18n="s1.d">Fonds de tasse, sernambi et coagulum des planteurs ivoiriens sont pesés, contrôlés en humidité et triés par qualité. Les lots les plus propres sont orientés vers le TSR10.</p>
-          </li>
-          <li>
-            <h3 data-i18n="s2.t">Trempage et pré-broyage</h3>
-            <p data-i18n="s2.d">La matière trempe dans des bassins pour libérer sable et écorces, puis passe au pré-broyeur. Les lots sont mélangés pour homogénéiser.</p>
-          </li>
-          <li>
-            <h3 data-i18n="s3.t">Lavage</h3>
-            <p data-i18n="s3.d">Des cuves d'agitation et un broyeur à marteaux éliminent les impuretés restantes sous eau courante.</p>
-          </li>
-          <li>
-            <h3 data-i18n="s4.t">Crêpage</h3>
-            <p data-i18n="s4.d">Trois à six crêpeuses à cylindres rainurés, sous aspersion, transforment le caoutchouc en feuilles de crêpe. Le TSR10 reçoit plus de passages.</p>
-          </li>
-          <li>
-            <h3 data-i18n="s5.t">Granulation</h3>
-            <p data-i18n="s5.d">Le crêpe est réduit en granulés, transportés par eau jusqu'aux caissons perforés du séchoir.</p>
-          </li>
-          <li>
-            <h3 data-i18n="s6.t">Séchage</h3>
-            <p data-i18n="s6.d">Séchoir à air chaud, 110 à 125 °C pendant 3 à 4 heures. La température est contrôlée pour préserver la plasticité (PRI).</p>
-          </li>
-          <li>
-            <h3 data-i18n="s7.t">Pressage et emballage</h3>
-            <p data-i18n="s7.d">Refroidi sous 60 °C, le caoutchouc est pressé en balles, passé au détecteur de métaux, filmé et mis en palette.</p>
-          </li>
-          <li>
-            <h3 data-i18n="s8.t">Analyse et certification</h3>
-            <p data-i18n="s8.d">Des échantillons de chaque lot sont analysés au laboratoire. Le résultat détermine le grade et figure sur le certificat d'analyse.</p>
-          </li>
-        </ol>
+    <section class="section products-sec">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">Catalogue</span>
+            <h2 class="reveal">Nos grades</h2>
+          </div>
+          <a href="produits.html" class="more-link reveal">Spécifications complètes <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="products" id="products" data-limit="3">
+          <div class="card sk-card"></div><div class="card sk-card"></div>
+        </div>
       </div>
     </section>
 
-    <!-- Quality -->
-    <section class="section section-dark" id="qualite">
-      <div class="wrap quality-grid">
-        <div>
-          <p class="eyebrow" data-i18n="quality.eyebrow">Contrôle qualité</p>
-          <h2 data-i18n="quality.title">Chaque lot est mesuré, pas estimé</h2>
-          <p class="section-lead" data-i18n="quality.lead">Le TSR est classé sur des critères de laboratoire, pas sur l'apparence. Nous appliquons ces contrôles à chaque lot et nous partageons les résultats avec nos clients.</p>
+
+    <section class="section sectors-sec">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">Industries</span>
+            <h2 class="reveal">Pour qui <br>nous produisons</h2>
+          </div>
+          <p class="muted reveal head-note">Manufacturiers, transformateurs et négociants : notre caoutchouc entre dans les produits qui roulent, transmettent et protègent.</p>
         </div>
-        <ul class="checks">
-          <li><span class="check-k mono">01</span><span data-i18n="q1">Échantillonnage de chaque lot selon ISO 1795</span></li>
-          <li><span class="check-k mono">02</span><span data-i18n="q2">Analyse des six paramètres ISO 2000 au laboratoire interne</span></li>
-          <li><span class="check-k mono">03</span><span data-i18n="q3">Détection métal sur 100 % des balles</span></li>
-          <li><span class="check-k mono">04</span><span data-i18n="q4">Traçabilité du lot sur chaque balle et chaque palette</span></li>
-          <li><span class="check-k mono">05</span><span data-i18n="q5">Certificat d'analyse joint à chaque expédition</span></li>
-        </ul>
+        <div class="sectors" id="sectors">
+          <a href="produits.html" class="sector reveal" data-img="assets/img/tsr20.jpg"><b>01</b><h3>Pneumatique</h3><p>Pneus poids lourds, agricoles, tourisme et rechapage.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a href="produits.html" class="sector reveal" data-img="assets/img/crepage.jpg"><b>02</b><h3>Caoutchouc technique</h3><p>Courroies, convoyeurs, tuyaux, joints et pièces moulées.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a href="produits.html" class="sector reveal" data-img="assets/img/tsr10.jpg"><b>03</b><h3>Chaussure</h3><p>Semelles et produits en caoutchouc du quotidien.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a href="produits.html" class="sector reveal" data-img="assets/img/export.jpg"><b>04</b><h3>Négoce &amp; export</h3><p>Lots conditionnés et certifiés, prêts à charger en conteneur.</p><svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="sector-float" id="sector-float"><img alt=""></div>
+    </section>
+
+    <section class="section process-sec">
+      <div class="container">
+        <div class="center-head">
+          <span class="eyebrow reveal">Production</span>
+          <h2 class="reveal">Quatre étapes, <em>une qualité mesurée</em></h2>
+        </div>
+        <div class="timeline" id="timeline">
+          <div class="tl-line"><span id="tl-fill"></span></div>
+          <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-leaf"/></svg></div><b>01</b><h3>Réception</h3><p>Pesée, contrôle et tri du coagulum des planteurs.</p></div>
+          <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-drop"/></svg></div><b>02</b><h3>Lavage &amp; crêpage</h3><p>Broyage, lavage et passage aux crêpeuses.</p></div>
+          <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-flame"/></svg></div><b>03</b><h3>Séchage</h3><p>Granulés séchés à 110–125 °C pendant 3 à 4 heures.</p></div>
+          <div class="tl-step reveal"><div class="tl-dot"><svg class="ic"><use href="#i-box"/></svg></div><b>04</b><h3>Pressage &amp; contrôle</h3><p>Balles de 33,33 kg, analysées et certifiées par lot.</p></div>
+        </div>
+        <div class="center-more reveal"><a href="production.html" class="more-link">Découvrir notre production <svg class="ic"><use href="#i-arrow"/></svg></a></div>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section class="section" id="contact">
-      <div class="wrap contact-grid">
-        <div class="contact-info">
-          <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
-          <h2 data-i18n="contact.title">Parlons de votre besoin</h2>
-          <p class="section-lead" data-i18n="contact.lead">Indiquez le grade, le volume et la destination. Nous revenons vers vous avec une offre et une fiche technique.</p>
-          <dl class="coords">
-            <div><dt data-i18n="c.email">E-mail</dt><dd><a href="mailto:contact@purca.com" id="contact-email">contact@purca.com</a></dd></div>
-            <div><dt data-i18n="c.phone">Téléphone</dt><dd><a href="tel:+2250000000000" id="contact-phone">+225 00 00 00 00 00</a></dd></div>
-            <div><dt data-i18n="c.address">Adresse</dt><dd id="contact-address" data-i18n="c.address.v">Adresse de l'usine, Côte d'Ivoire</dd></div>
-          </dl>
+    <section class="cta">
+      <div class="cta-bg" data-speed="0.25" style="background-image:url(assets/img/export.jpg)"></div>
+      <div class="container cta-in">
+        <h2 class="reveal">Besoin d'un <br>approvisionnement régulier ?</h2>
+        <div class="reveal">
+          <p>Grade, volume, destination : décrivez votre besoin, nous revenons vers vous avec une offre et la fiche technique.</p>
+          <a href="contact.html#quote" class="btn btn-white magnetic">Demander un devis <svg class="ic"><use href="#i-arrow"/></svg></a>
         </div>
+      </div>
+    </section>
 
-        <form class="quote" id="quote-form" novalidate>
-          <div class="field">
-            <label for="q-company" data-i18n="f.company">Société</label>
-            <input id="q-company" name="company" type="text" autocomplete="organization" required>
+    <section class="section">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <span class="eyebrow reveal">Galerie</span>
+            <h2 class="reveal">De la plantation au conteneur</h2>
           </div>
-          <div class="field">
-            <label for="q-name" data-i18n="f.name">Nom et prénom</label>
-            <input id="q-name" name="name" type="text" autocomplete="name" required>
-          </div>
-          <div class="field">
-            <label for="q-email" data-i18n="f.email">E-mail professionnel</label>
-            <input id="q-email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="field-row">
-            <div class="field">
-              <label for="q-grade" data-i18n="f.grade">Grade</label>
-              <select id="q-grade" name="grade">
-                <option value="TSR20">TSR20</option>
-                <option value="TSR10">TSR10</option>
-                <option value="TSR10 + TSR20" data-i18n="f.both">Les deux</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="q-volume" data-i18n="f.volume">Volume (tonnes / mois)</label>
-              <input id="q-volume" name="volume" type="number" min="1" step="1" inputmode="numeric">
-            </div>
-          </div>
-          <div class="field">
-            <label for="q-country" data-i18n="f.country">Pays de livraison</label>
-            <input id="q-country" name="country" type="text" autocomplete="country-name">
-          </div>
-          <div class="field">
-            <label for="q-msg" data-i18n="f.msg">Message</label>
-            <textarea id="q-msg" name="message" rows="4"></textarea>
-          </div>
-          <div class="hp" aria-hidden="true">
-            <label for="q-website">Site web</label>
-            <input id="q-website" name="website" type="text" tabindex="-1" autocomplete="off">
-          </div>
-          <p class="form-error" id="form-error" role="alert" hidden></p>
-          <p class="form-success" id="form-success" role="status" hidden data-i18n="f.ok">Merci, votre demande a bien été envoyée. Nous vous répondrons rapidement.</p>
-          <button class="btn btn-primary" id="q-submit" type="submit" data-i18n="f.send">Envoyer la demande</button>
-        </form>
+          <a href="galerie.html" class="more-link reveal">Toute la galerie <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="gallery" id="gallery" data-limit="5"></div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap footer-inner">
-      <div class="brand brand-footer">
-        <img src="assets/img/logo.svg" alt="" width="32" height="32">
-        <span class="brand-name">PURCA</span>
+  <footer>
+    <a href="contact.html#quote" class="big-cta">
+      <span class="bc-track"><span>Parlons de votre besoin</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre besoin</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre besoin</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre besoin</span><svg class="ic"><use href="#i-arrow"/></svg></span>
+    </a>
+    <div class="container foot">
+      <div class="foot-brand">
+        <img src="assets/img/logo-light.png" alt="PURCA">
+        <p>Production de caoutchouc naturel technique TSR10 et TSR20 en Côte d'Ivoire, pour l'industrie du pneumatique et du caoutchouc.</p>
       </div>
-      <p data-i18n="footer.tag">Caoutchouc naturel technique TSR10 et TSR20, produit en Côte d'Ivoire.</p>
-      <p class="copy">© <span id="year">2026</span> PURCA. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+      <div><h4>Navigation</h4><a href="entreprise.html">Entreprise</a><a href="produits.html">Produits</a><a href="production.html">Production</a><a href="galerie.html">Galerie</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div>
+      <div><h4>Produits</h4><div id="foot-products"></div></div>
+      <div><h4>Contact</h4><a data-site-href="tel" data-site="phone"></a><a data-site-href="mailto" data-site="email"></a><span data-site="address"></span><span data-site="hours"></span></div>
     </div>
+    <div class="container foot-bottom">
+      <span>© <span id="year"></span> PURCA — Caoutchouc naturel de Côte d'Ivoire</span>
+      <a href="admin/" class="admin-link" data-no-transition>Administration</a>
+    </div>
+    <div class="foot-flag"><i></i><i></i><i></i></div>
   </footer>
 
-  <script src="assets/js/config.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <a id="wa" class="wa" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ic"><use href="#i-wa"/></svg></a>
+  <button id="totop" aria-label="Haut de page"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18"/></svg><span>↑</span></button>
+  <div id="lightbox"><button class="lb-close" aria-label="Fermer">×</button><button class="lb-prev" aria-label="Précédent">‹</button><img alt=""><span class="lb-count"></span><button class="lb-next" aria-label="Suivant">›</button></div>
+  <div id="toast" role="status"></div>
+
+  <!-- Icônes -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M6 3.5h12v17H6z M9 8h6M9 12h6M9 16h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v5M12 7.5v.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-mountain" viewBox="0 0 24 24"><path d="M3 20 9.5 8l4 6.5L16 11l5 9z M8 12.5l1.5 1.5 1.5-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M12 2.8 20 6v6c0 4.6-3.3 8-8 9.2C7.3 20 4 16.6 4 12V6z M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6.5h11v9h-11zM13.5 9.5h4l3 3.5v2.5h-7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="6.5" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><path d="M3 5h18M3 12h18M3 19h18M7 3v18M12 3v18M17 3v18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-clock2" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9M12 7v5l3 2M17 3l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-handshake" viewBox="0 0 24 24"><path d="M2.5 11 6 7.5l3 1 3-2 3.5 1 3.5-1L21.5 11M5 12l4.5 4.5a1.5 1.5 0 0 0 2.1 0L17 11M8 15l-1.5 1.5M11 17.5l-1 1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-helmet" viewBox="0 0 24 24"><path d="M3 17h18M4.5 17a7.5 7.5 0 0 1 15 0M10 9.8V6h4v3.8M12 6v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.8 6.8l1.4-2.2 4.3 1.7V19a1.9 1.9 0 0 1-2 1.9A16.5 16.5 0 0 1 3.1 5.5 1.9 1.9 0 0 1 5 3.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 5.5h18v13H3z M3.5 6l8.5 7 8.5-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s-7-6.2-7-11.5a7 7 0 0 1 14 0c0 5.3-7 11.5-7 11.5z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7a10.7 10.7 0 0 1-5.5-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.4 6.4 0 0 0 1.4 3.4 14.6 14.6 0 0 0 5.6 4.9c2 .9 2.9.9 3.9.8a3.3 3.3 0 0 0 2.2-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.2-.3-.3-.6-.4z"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15M5 19l8-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.6 6 11a6 6 0 0 1-12 0c0-4.4 6-11 6-11z M9.5 14.5a2.6 2.6 0 0 0 2.5 2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9.5 3h5M10 3v6l-5.2 9.2A1.9 1.9 0 0 0 6.5 21h11a1.9 1.9 0 0 0 1.7-2.8L14 9V3M7.3 15h9.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M3.5 7.5 12 3.5l8.5 4v9L12 20.5l-8.5-4zM3.5 7.5 12 11.5l8.5-4M12 11.5v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-ship" viewBox="0 0 24 24"><path d="M3 16.5 4.5 20h15l1.5-3.5zM5 16.5V12h14v4.5M8 12V8h8v4M11 8V5h2v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 21a6.5 6.5 0 0 1-6.5-6.5C5.5 10 9 8 9.5 4c3 2 4 4.5 3.8 7 1-.8 1.7-2 1.9-3.2 2 1.8 3.3 4.2 3.3 6.7A6.5 6.5 0 0 1 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+  </svg>
+
   <script src="assets/js/main.js"></script>
 </body>
 </html>
