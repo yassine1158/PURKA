@@ -134,14 +134,6 @@
     el.addEventListener("mouseleave", () => (el.style.transform = ""));
   };
 
-  /* ---------- compteurs ---------- */
-  const countIO = "IntersectionObserver" in window ? new IntersectionObserver((es) => es.forEach((e) => {
-    if (!e.isIntersecting) return; countIO.unobserve(e.target);
-    const b = e.target, end = +b.dataset.to, suf = b.dataset.suffix || "", t0 = performance.now();
-    if (reduce) { b.textContent = end + suf; return; }
-    const step = (t) => { const k = Math.min((t - t0) / 1600, 1); b.textContent = Math.round(end * (1 - Math.pow(1 - k, 4))) + suf; if (k < 1) requestAnimationFrame(step); };
-    requestAnimationFrame(step);
-  }), { threshold: 0.6 }) : null;
 
   const burger = $("#burger"), menu = $("#menu");
   const toggleMenu = (open) => {
@@ -233,12 +225,6 @@
     if (wa) ["#wa", "#faq-wa", "#qc-wa", "#cta-wa"].forEach((s) => { const el = $(s); if (el) el.href = wa; });
     const map = $("#map"); if (map && (d.mapQuery || d.address)) map.src = "https://maps.google.com/maps?q=" + encodeURIComponent(d.mapQuery || d.address) + "&z=11&output=embed";
 
-    const stats = $("#stats");
-    if (stats) {
-      stats.innerHTML = (d.stats || []).map((s) => `<div class="stat reveal"><b data-to="${+s.value || 0}" data-suffix="${esc(s.suffix)}">${esc(s.value)}${esc(s.suffix)}</b><span>${esc(s.label)}</span></div>`).join("");
-      if (countIO) $$(".stat b", stats).forEach((b) => countIO.observe(b));
-      observe(stats);
-    }
 
     const gal = $("#gallery");
     if (gal) {
@@ -288,16 +274,6 @@
   // « TSR 10 » devient « TSR » en petit et « 10 » en grand
   const gradeHTML = (g) => { const m = String(g || "").match(/^(\D*?)\s*(\d.*)$/); return m && m[1] ? `<small>${esc(m[1])}</small>${esc(m[2])}` : esc(g); };
   const priceText = (p) => p.price ? `${esc(p.price)} ${esc(p.currency || "USD")} / ${esc(p.unit || "tonne")}` : "Sur devis";
-  const ISO = [
-    ["dirt", "Impuretés (tamis 45 µm), max.", "%"], ["ash", "Cendres, max.", "%"], ["nitrogen", "Azote, max.", "%"],
-    ["volatile", "Matières volatiles, max.", "%"], ["po", "Plasticité initiale P0, min.", ""], ["pri", "Indice PRI, min.", ""],
-  ];
-  const isoHTML = (list) => `<thead><tr><th scope="col">Paramètre</th>${list.length > 1 ? list.map((p) => `<th scope="col" class="n">${esc(p.grade || p.name)}</th>`).join("") : '<th scope="col" class="n">Limite</th>'}</tr></thead>
-    <tbody>${ISO.map(([k, label, u]) => {
-      // barre proportionnelle à la plus grande valeur de la ligne, pour comparer les grades d'un coup d'œil
-      const nums = list.map((p) => parseFloat(String((p.specs || {})[k] || "").replace(",", ".")) || 0), max = Math.max(...nums);
-      return `<tr><th scope="row">${label}${u ? ` <small>(${u})</small>` : ""}</th>${list.map((p, i) => `<td class="n">${list.length > 1 && max ? `<span class="bar" style="--w:${Math.round(nums[i] / max * 100)}%"></span>` : ""}<span class="v">${esc((p.specs || {})[k] || "—")}</span></td>`).join("")}</tr>`;
-    }).join("")}</tbody>`;
   const factsHTML = (p) => [
     ["Grade", esc(p.grade || "—")],
     ["Norme", "ISO 2000"],
@@ -316,7 +292,6 @@
       <a class="card-grade" href="${productURL(p)}">${gradeHTML(p.grade || p.name)}</a>
       <h3><a href="${productURL(p)}">${esc(p.name)}</a></h3>
       <p>${esc(p.description)}</p>
-      ${p.specs ? `<dl class="card-specs"><div><dt>Impuretés</dt><dd>≤ ${esc(p.specs.dirt || "—")} %</dd></div><div><dt>Cendres</dt><dd>≤ ${esc(p.specs.ash || "—")} %</dd></div><div><dt>PRI</dt><dd>≥ ${esc(p.specs.pri || "—")}</dd></div></dl>` : ""}
       <div class="tags">${(p.usages || []).map((u) => `<span>${esc(u)}</span>`).join("")}</div>
       <div class="card-foot">
         <span class="price">${priceText(p) === "Sur devis" ? "Prix sur devis" : priceText(p)}</span>
@@ -349,7 +324,6 @@
     }
     const qp = $("#q-product"); if (qp) qp.innerHTML = list.map((p) => `<option>${esc(p.name)}</option>`).join("");
     $("#foot-products").innerHTML = list.slice(0, 6).map((p) => `<a href="${productURL(p)}">${esc(p.name)}</a>`).join("");
-    const iso = $("#iso-table"); if (iso) iso.innerHTML = isoHTML(list.filter((p) => p.specs));
     if ($("#pp")) renderProductPage(list);
     renderBasket();
   }).catch(() => { const b = $("#products"); if (b) b.innerHTML = '<p class="muted">Impossible de charger les produits.</p>'; });
@@ -367,7 +341,6 @@
     $("#pp-title").textContent = p.name;
     $("#pp-desc").textContent = p.description || "";
     $("#pp-specs").innerHTML = factsHTML(p);
-    $("#pp-iso").innerHTML = isoHTML([p]);
     $("#pp-tags").innerHTML = (p.usages || []).map((u) => `<span>${esc(u)}</span>`).join("") || "<span>Tous usages</span>";
     $("#pp-unit").textContent = short(p.unit);
     const setWa = () => ($("#pp-wa").href = `https://wa.me/${site.whatsapp || ""}?text=${encodeURIComponent(`Bonjour PURCA, je souhaite un devis pour : ${p.name} — ${$("#pp-qty").value} ${short(p.unit)}.`)}`);

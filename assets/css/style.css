@@ -666,3 +666,13 @@ h1 .w>span{display:inline-block;transition:transform 1.1s var(--ease)}
 @media (max-width:640px){
   .nav{top:100%;height:calc(100vh - 68px);height:calc(100dvh - 68px)}
 }
+
+/* ---------- contrôle qualité : liste ---------- */
+.quality-list{list-style:none;margin:0;padding:0;display:grid}
+.quality-list li{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:26px 0;border-top:1px solid rgba(255,255,255,.12)}
+.quality-list li:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
+.quality-list .step-n{color:#5ee08f;font-size:1rem;padding-top:4px}
+.quality-list h3{color:#fff;font-size:1.45rem;margin-bottom:6px}
+.quality-list p{color:var(--on-dark-muted)}
+.hero-card-row{grid-template-columns:auto 1fr}
+.hero-card-row em{text-align:right;font:500 .9rem var(--body)}

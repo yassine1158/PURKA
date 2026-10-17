@@ -136,14 +136,12 @@
     return id;
   };
   const dlg = $("#dlg"), pf = $("#pform"); let editing = -1, editImg = "";
-  const SPECS = ["dirt", "ash", "nitrogen", "volatile", "po", "pri"];
   function openForm(i) {
     editing = i;
-    const p = i >= 0 ? products[i] : { category: "tsr", unit: "tonne", currency: "USD", packaging: "Balles filmées, sur palettes ou en caisses", available: true, usages: [], specs: {}, image: "assets/img/plantation.jpg" };
+    const p = i >= 0 ? products[i] : { category: "tsr", unit: "tonne", currency: "USD", packaging: "Balles filmées, sur palettes ou en caisses", available: true, usages: [], image: "assets/img/plantation.jpg" };
     $("#dlg-title").textContent = i >= 0 ? "Modifier le produit" : "Nouveau produit";
     for (const k of ["name", "category", "grade", "packaging", "price", "unit", "description"]) pf.elements[k].value = p[k] || "";
     pf.elements.currency.value = p.currency || "USD";
-    SPECS.forEach((k) => (pf.elements["spec-" + k].value = (p.specs || {})[k] || ""));
     pf.elements.usages.value = (p.usages || []).join(", ");
     pf.elements.available.checked = p.available !== false;
     pf.elements.featured.checked = !!p.featured;
@@ -165,7 +163,7 @@
       id: editing >= 0 && products[editing].name === v("name") ? products[editing].id : uniqueId(v("name"), editing),
       name: v("name"), category: v("category"), grade: v("grade"),
       description: v("description"), usages: v("usages").split(",").map((s) => s.trim()).filter(Boolean),
-      specs: Object.fromEntries(SPECS.map((k) => [k, v("spec-" + k)])), packaging: v("packaging"),
+      packaging: v("packaging"),
       price: v("price"), currency: v("currency"), unit: v("unit"), image: editImg,
       available: pf.elements.available.checked, featured: pf.elements.featured.checked,
     };
@@ -182,17 +180,12 @@
   const SF = ["tagline", "heroTitle", "heroText", "about", "phone", "whatsapp", "email", "address", "hours", "mapQuery"];
   function renderSettings() {
     const f = $("#settings"); SF.forEach((k) => (f.elements[k].value = site[k] || ""));
-    $("#stats-edit").innerHTML = (site.stats || []).map((s, i) => `<div class="stat-row">
-      <input data-s="${i}" data-k="value" type="number" value="${esc(s.value)}" title="Valeur">
-      <input data-s="${i}" data-k="suffix" value="${esc(s.suffix)}" placeholder="+, %, h…" title="Suffixe">
-      <input data-s="${i}" data-k="label" value="${esc(s.label)}" placeholder="Libellé"></div>`).join("");
   }
   $("#settings").addEventListener("input", () => markDirty());
   // site.json regroupe les onglets Informations, FAQ et Galerie : chaque publication reprend les trois
   async function saveSite(label, message) {
     const f = $("#settings"); SF.forEach((k) => (site[k] = f.elements[k].value.trim()));
     site.whatsapp = site.whatsapp.replace(/\D/g, "");
-    $$("[data-s]").forEach((el) => { const s = site.stats[+el.dataset.s]; s[el.dataset.k] = el.dataset.k === "value" ? Number(el.value) || 0 : el.value; });
     site.faq = (site.faq || []).filter((x) => x.q.trim());
     await publishImages(site.gallery || []);
     busy(label);

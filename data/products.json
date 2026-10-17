@@ -11,14 +11,6 @@
       "Tuyaux et joints",
       "Chaussures"
     ],
-    "specs": {
-      "dirt": "0,08",
-      "ash": "0,60",
-      "nitrogen": "0,60",
-      "volatile": "0,80",
-      "po": "30",
-      "pri": "50"
-    },
     "packaging": "Balles filmées, sur palettes ou en caisses",
     "price": "",
     "currency": "USD",
@@ -39,14 +31,6 @@
       "Rechapage",
       "Caoutchouc industriel"
     ],
-    "specs": {
-      "dirt": "0,16",
-      "ash": "0,80",
-      "nitrogen": "0,60",
-      "volatile": "0,80",
-      "po": "30",
-      "pri": "40"
-    },
     "packaging": "Balles filmées, sur palettes ou en caisses",
     "price": "",
     "currency": "USD",

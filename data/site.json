@@ -4,28 +4,6 @@
   "heroTitle": "Le caoutchouc naturel TSR de Côte d'Ivoire",
   "heroText": "PURCA transforme le coagulum des planteurs d'hévéa en caoutchouc technique TSR10 et TSR20 : lavé, séché, pressé en balles et analysé lot par lot selon la norme ISO 2000.",
   "about": "Installée à San-Pédro, au cœur de la première région productrice de caoutchouc de Côte d'Ivoire et à proximité de son port d'exportation, PURCA transforme le coagulum collecté auprès des planteurs dans sa propre usine. Chaque lot est contrôlé au laboratoire avant d'être pressé en balles et expédié aux manufacturiers du pneumatique et de l'industrie du caoutchouc.",
-  "stats": [
-    {
-      "value": 2,
-      "suffix": "",
-      "label": "Grades produits : TSR10 et TSR20"
-    },
-    {
-      "value": 6,
-      "suffix": "",
-      "label": "Paramètres ISO 2000 contrôlés sur chaque lot"
-    },
-    {
-      "value": 100,
-      "suffix": "%",
-      "label": "Des lots analysés avant expédition"
-    },
-    {
-      "value": 1,
-      "suffix": "er",
-      "label": "La Côte d'Ivoire, premier producteur africain"
-    }
-  ],
   "phone": "+225 00 00 00 00 00",
   "whatsapp": "2250000000000",
   "email": "contact@purca.ci",
@@ -51,7 +29,7 @@
     },
     {
       "q": "Quelle est la différence entre le TSR10 et le TSR20 ?",
-      "a": "Les deux viennent du même procédé. Le TSR10 est fabriqué à partir d'une matière première plus propre et reçoit plus de lavage : impuretés 0,08 % maximum et PRI 50 minimum, contre 0,16 % et 40 pour le TSR20. Le TSR20 est le grade de référence pour les pneus poids lourds."
+      "a": "Les deux viennent du même procédé. Le TSR10 est fabriqué à partir d'une matière première plus propre et reçoit plus de lavage, pour les applications où la propreté compte. Le TSR20 est le grade de référence pour les pneus poids lourds."
     },
     {
       "q": "Comment le caoutchouc est-il conditionné ?",
@@ -59,7 +37,7 @@
     },
     {
       "q": "Fournissez-vous un certificat d'analyse ?",
-      "a": "Oui. Chaque lot est échantillonné et analysé dans notre laboratoire sur les six paramètres de la norme ISO 2000 (impuretés, cendres, azote, matières volatiles, plasticité P0 et PRI). Le certificat d'analyse accompagne chaque expédition."
+      "a": "Oui. Chaque lot est échantillonné et analysé dans notre laboratoire selon la norme ISO 2000. Le certificat d'analyse accompagne chaque expédition."
     },
     {
       "q": "Quel volume minimum pour une commande ?",
