@@ -11,19 +11,19 @@
       "label": "Grades produits : TSR10 et TSR20"
     },
     {
-      "value": 33,
-      "suffix": ",33 kg",
-      "label": "Par balle, filmée et détectée métal"
-    },
-    {
       "value": 6,
       "suffix": "",
-      "label": "Paramètres ISO 2000 contrôlés"
+      "label": "Paramètres ISO 2000 contrôlés sur chaque lot"
     },
     {
       "value": 100,
       "suffix": "%",
       "label": "Des lots analysés avant expédition"
+    },
+    {
+      "value": 1,
+      "suffix": "er",
+      "label": "La Côte d'Ivoire, premier producteur africain"
     }
   ],
   "phone": "+225 00 00 00 00 00",
@@ -34,12 +34,15 @@
   "mapQuery": "Côte d'Ivoire",
   "gallery": [
     "assets/img/plantation.jpg",
-    "assets/img/coagulum.jpg",
-    "assets/img/crepage.jpg",
-    "assets/img/sechage.jpg",
-    "assets/img/balles.jpg",
-    "assets/img/laboratoire.jpg",
-    "assets/img/export.jpg"
+    "assets/img/saignee.jpg",
+    "assets/img/plantation-liberia.jpg",
+    "assets/img/latex-tasse.jpg",
+    "assets/img/allee-heveas.jpg",
+    "assets/img/latex-recolte.jpg",
+    "assets/img/arbre-saigne.jpg",
+    "assets/img/plantation-cameroun.jpg",
+    "assets/img/seau-latex.jpg",
+    "assets/img/echantillons-crepe.jpg"
   ],
   "faq": [
     {
@@ -52,7 +55,7 @@
     },
     {
       "q": "Comment le caoutchouc est-il conditionné ?",
-      "a": "En balles de 33,33 kg (670 × 330 × 170 mm) filmées en polyéthylène à bas point de fusion, qui passe directement au mélangeur. Les balles sont regroupées par 36 sur palette ou en caisse, soit 1,2 tonne, et environ 20 tonnes par conteneur de 20 pieds."
+      "a": "En balles compressées, filmées en polyéthylène à bas point de fusion qui passe directement au mélangeur. Les balles sont regroupées sur palettes ou en caisses et chargées en conteneur. Le conditionnement peut être adapté à vos exigences."
     },
     {
       "q": "Fournissez-vous un certificat d'analyse ?",

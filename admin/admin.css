@@ -21,7 +21,7 @@ label.chk input{width:18px;height:18px;accent-color:var(--brand)}
 
 /* connexion */
 .login{min-height:100vh;display:grid;grid-template-columns:1.1fr 1fr;background:var(--paper)}
-.login::before{content:"";background:linear-gradient(0deg,rgba(18,20,24,.85),rgba(18,20,24,.2)),url(../assets/img/balles.jpg) center/cover}
+.login::before{content:"";background:linear-gradient(0deg,rgba(18,20,24,.85),rgba(18,20,24,.2)),url(../assets/img/plantation.jpg) center/cover}
 .login-box{background:var(--paper);padding:clamp(28px,6vw,70px);display:grid;gap:16px;align-content:center;max-width:560px;width:100%;margin:auto}
 .login-box img{width:200px}
 .login-box h1{font-size:2.6rem;margin-top:10px}

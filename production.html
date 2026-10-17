@@ -5,208 +5,170 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Notre production — Du coagulum à la balle TSR | PURCA</title>
   <meta name="description" content="Comment PURCA produit son caoutchouc TSR10 et TSR20 : réception du coagulum, lavage, crêpage, séchage, pressage et analyse ISO 2000.">
-  <meta name="theme-color" content="#101512">
+  <meta name="theme-color" content="#0b2318">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="PURCA">
   <meta property="og:title" content="Notre production — Du coagulum à la balle TSR | PURCA">
   <meta property="og:description" content="Comment PURCA produit son caoutchouc TSR10 et TSR20 : réception du coagulum, lavage, crêpage, séchage, pressage et analyse ISO 2000.">
-  <meta property="og:image" content="assets/img/balles.jpg">
+  <meta property="og:image" content="assets/img/plantation.jpg">
   <link rel="icon" href="assets/img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
-  <script>
-    /* Téléphone : version une page (mobile.html) — ordinateur : version multi-pages */
-    (function(){
-      var page="production", mobile=matchMedia("(max-width: 767px), (pointer: coarse) and (max-height: 500px)").matches;
-      var sections={accueil:"",entreprise:"#entreprise",produits:"#produits",production:"#production",galerie:"#galerie",faq:"#faq",contact:"#contact"};
-      if(page==="404") return;
-      if(mobile && page!=="onepage"){
-        var isProduct=/produit\.html$/.test(location.pathname);
-        location.replace("mobile.html"+(isProduct?location.search:"")+(sections[page]||""));
-      } else if(!mobile && page==="onepage"){
-        var id=new URLSearchParams(location.search).get("id"), h=location.hash.slice(1);
-        var files={entreprise:"entreprise.html",produits:"produits.html",production:"production.html",galerie:"galerie.html",faq:"faq.html",contact:"contact.html"};
-        location.replace(id?"produit.html?id="+encodeURIComponent(id):(files[h]||"index.html"));
-      }
-    })();
-    try{if(sessionStorage.getItem("purca_seen"))document.documentElement.classList.add("seen")}catch(e){}
-  </script>
+  <script>document.documentElement.classList.add("js")</script>
 </head>
 <body data-page="production">
-  <!-- Préchargement (1re visite) / transition entre pages -->
-  <div id="preloader">
-    <img src="assets/img/logo-light.png" alt="PURCA">
-    <div class="pl-count"><span id="pl-num">0</span>%</div>
-    <div class="pl-curtain"><i></i><i></i><i></i></div>
-  </div>
-  <div id="leave" aria-hidden="true"><i></i><i></i><i></i><img src="assets/img/logo-light.png" alt=""></div>
-  <div id="progress"></div>
-  <div id="cursor" aria-hidden="true"><span class="c-dot"></span><span class="c-ring"><em></em></span></div>
+  <a class="skip" href="#main">Aller au contenu</a>
 
-  <div class="topbar">
-    <div class="container topbar-in">
-      <span><svg class="ic"><use href="#i-clock"/></svg><span data-site="hours"></span></span>
-      <span class="tb-right">
-        <a data-site-href="tel" data-site="phone"></a>
-        <a data-site-href="mailto" data-site="email"></a>
-      </span>
-    </div>
-  </div>
-
-  <header id="header">
-    <div class="container nav">
-      <a href="index.html" class="brand" aria-label="PURCA — accueil">
-        <img class="logo-light" src="assets/img/logo-light.png" alt="PURCA">
-        <img class="logo-color" src="assets/img/logo.png" alt="">
+  <header class="site-header" id="header">
+    <div class="container header-in">
+      <a href="index.html" class="brand" aria-label="PURCA, accueil">
+        <img src="assets/img/logo.png" alt="PURCA" width="168" height="40">
       </a>
-      <nav id="menu">
+      <nav class="nav" id="menu" aria-label="Navigation principale">
         <a href="index.html" data-nav="accueil">Accueil</a>
         <a href="entreprise.html" data-nav="entreprise">Entreprise</a>
         <a href="produits.html" data-nav="produits">Produits</a>
         <a href="production.html" data-nav="production">Production</a>
         <a href="galerie.html" data-nav="galerie">Galerie</a>
+        <a href="faq.html" data-nav="faq">FAQ</a>
         <a href="contact.html" data-nav="contact">Contact</a>
-        <div class="menu-foot"><a data-site-href="tel" data-site="phone"></a><a data-site-href="mailto" data-site="email"></a></div>
+        <a href="contact.html#quote" class="btn nav-mobile-cta">Demander un devis</a>
       </nav>
-      <a href="contact.html#quote" class="basket-btn" id="basket-btn" aria-label="Ma demande de devis"><svg class="ic"><use href="#i-list"/></svg><b id="basket-count">0</b></a>
-      <a href="contact.html#quote" class="btn btn-sm nav-cta magnetic">Demander un devis <svg class="ic"><use href="#i-arrow"/></svg></a>
-      <button id="burger" aria-label="Menu"><span></span><span></span></button>
+      <div class="header-actions">
+        <a href="contact.html#quote" class="basket" id="basket-btn" aria-label="Ma demande de devis">
+          <svg class="ic"><use href="#i-list"/></svg><b id="basket-count">0</b>
+        </a>
+        <a href="contact.html#quote" class="btn btn-sm header-cta">Demander un devis</a>
+        <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+      </div>
     </div>
   </header>
 
   <main id="main">
     <section class="page-hero">
-      <div class="ph-bg" style="background-image:url(assets/img/sechage.jpg)"></div>
-      <div class="grain"></div>
-      <div class="container ph-in">
-        <nav class="crumbs split-up" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span>Production</span></nav>
-        <h1 data-split>Notre production</h1>
-        <p class="split-up">Quatre étapes maîtrisées dans notre usine pour un caoutchouc propre, régulier et certifié lot par lot.</p>
-      </div>
-      <span class="ph-num">03</span>
-    </section>
-
-    <section class="section steps-sec">
       <div class="container">
-        <div class="step-row">
-          <div class="mask-reveal sr-img"><img src="assets/img/coagulum.jpg" alt="Coagulum de caoutchouc à la réception" loading="lazy"></div>
-          <div class="sr-text">
-            <span class="sr-num reveal">01</span>
-            <h2 class="reveal">Réception &amp; tri</h2>
-            <p class="reveal">Fonds de tasse, sernambi et coagulum des planteurs sont pesés, contrôlés en humidité et triés par qualité. Les lots les plus propres sont orientés vers le TSR10. Ils trempent ensuite en bassin pour libérer sable et écorces.</p>
-            <ul class="checks-list reveal"><li>Pesée et contrôle à l'arrivée</li><li>Tri par qualité de matière</li><li>Trempage et pré-broyage</li></ul>
-          </div>
-        </div>
-        <div class="step-row rev">
-          <div class="mask-reveal sr-img"><img src="assets/img/crepage.jpg" alt="Crêpes de caoutchouc après crêpage" loading="lazy"></div>
-          <div class="sr-text">
-            <span class="sr-num reveal">02</span>
-            <h2 class="reveal">Lavage &amp; crêpage</h2>
-            <p class="reveal">Des cuves d'agitation et un broyeur à marteaux éliminent les impuretés. Trois à six crêpeuses à cylindres rainurés, sous aspersion d'eau, transforment ensuite le caoutchouc en feuilles de crêpe. Le TSR10 reçoit plus de passages.</p>
-            <ul class="checks-list reveal"><li>Lavage sous eau courante</li><li>Trois à six passages en crêpeuse</li><li>Mélange des lots pour l'homogénéité</li></ul>
-          </div>
-        </div>
-        <div class="step-row">
-          <div class="mask-reveal sr-img"><img src="assets/img/sechage.jpg" alt="Caissons de séchage du caoutchouc" loading="lazy"></div>
-          <div class="sr-text">
-            <span class="sr-num reveal">03</span>
-            <h2 class="reveal">Granulation &amp; séchage</h2>
-            <p class="reveal">Le crêpe est réduit en granulés, transportés par eau jusqu'aux caissons perforés. Le séchoir à air chaud les sèche à 110–125 °C pendant 3 à 4 heures. La température est contrôlée pour préserver la plasticité du caoutchouc (PRI).</p>
-            <ul class="checks-list reveal"><li>Granulation en continu</li><li>Séchage 110–125 °C, 3 à 4 h</li><li>Refroidissement sous 60 °C</li></ul>
-          </div>
-        </div>
-        <div class="step-row rev">
-          <div class="mask-reveal sr-img"><img src="assets/img/laboratoire.jpg" alt="Analyse au laboratoire" loading="lazy"></div>
-          <div class="sr-text">
-            <span class="sr-num reveal">04</span>
-            <h2 class="reveal">Pressage &amp; contrôle</h2>
-            <p class="reveal">Le caoutchouc est pressé en balles de 33,33 kg, passé au détecteur de métaux, filmé et mis en palette. Des échantillons de chaque lot sont analysés au laboratoire : le résultat fixe le grade et figure sur le certificat d'analyse.</p>
-            <ul class="checks-list reveal"><li>Détection métal sur toutes les balles</li><li>Analyse des six paramètres ISO 2000</li><li>Certificat d'analyse par lot</li></ul>
-          </div>
+        <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><span>Production</span></nav>
+        <h1>Notre production</h1>
+        <p class="lead">Quatre étapes maîtrisées dans notre usine pour un caoutchouc propre, régulier et certifié lot par lot.</p>
+      </div>
+    </section>
+    <div class="container"><figure class="banner"><img src="assets/img/arbre-saigne.jpg" alt="Hévéa saigné avec sa tasse de récolte" width="1800" height="1352"></figure></div>
+
+    <section class="section">
+      <div class="container">
+        <div class="process">
+          <article class="process-row reveal">
+            <span class="process-n">01</span>
+            <div>
+              <h2>Réception et tri</h2>
+              <p>Fonds de tasse, sernambi et coagulum des planteurs sont pesés, contrôlés en humidité et triés par qualité. Les lots les plus propres sont orientés vers le TSR10. La matière trempe ensuite en bassin pour libérer sable et écorces, puis passe au pré-broyeur.</p>
+            </div>
+            <ul class="ticks"><li>Pesée et contrôle à l'arrivée</li><li>Tri par qualité de matière</li><li>Trempage et pré-broyage</li></ul>
+          </article>
+          <article class="process-row reveal">
+            <span class="process-n">02</span>
+            <div>
+              <h2>Lavage et crêpage</h2>
+              <p>Des cuves d'agitation et un broyeur à marteaux éliminent les impuretés sous eau courante. Trois à six crêpeuses à cylindres rainurés transforment ensuite le caoutchouc en feuilles de crêpe. Le TSR10 reçoit plus de passages.</p>
+            </div>
+            <ul class="ticks"><li>Lavage sous eau courante</li><li>Trois à six passages en crêpeuse</li><li>Mélange des lots pour l'homogénéité</li></ul>
+          </article>
+          <article class="process-row reveal">
+            <span class="process-n">03</span>
+            <div>
+              <h2>Granulation et séchage</h2>
+              <p>Le crêpe est réduit en granulés, transportés par eau jusqu'aux caissons du séchoir. L'air chaud les sèche à 110–125 °C pendant 3 à 4 heures. La température est contrôlée pour préserver la plasticité du caoutchouc (PRI).</p>
+            </div>
+            <ul class="ticks"><li>Granulation en continu</li><li>Séchage à 110–125 °C</li><li>Refroidissement avant pressage</li></ul>
+          </article>
+          <article class="process-row reveal">
+            <span class="process-n">04</span>
+            <div>
+              <h2>Pressage et contrôle</h2>
+              <p>Le caoutchouc est pressé en balles, passé au détecteur de métaux, filmé et mis en palette. Des échantillons de chaque lot sont analysés au laboratoire : le résultat fixe le grade et figure sur le certificat d'analyse.</p>
+            </div>
+            <ul class="ticks"><li>Détection métal sur toutes les balles</li><li>Six paramètres ISO 2000</li><li>Certificat d'analyse par lot</li></ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section equip-sec">
-      <div class="container">
-        <div class="center-head">
-          <span class="eyebrow reveal">Notre usine</span>
-          <h2 class="reveal">Une ligne <em>complète</em></h2>
-        </div>
-        <div class="equip">
-          <article class="eq reveal" data-cursor="Voir"><img src="assets/img/coagulum.jpg" alt="" loading="lazy"><div><b>01</b><h3>Bassins &amp; pré-broyeur</h3><p>Trempage et réduction du coagulum.</p></div></article>
-          <article class="eq reveal" data-cursor="Voir"><img src="assets/img/crepage.jpg" alt="" loading="lazy"><div><b>02</b><h3>Crêpeuses</h3><p>Lavage et formation des crêpes.</p></div></article>
-          <article class="eq reveal" data-cursor="Voir"><img src="assets/img/sechage.jpg" alt="" loading="lazy"><div><b>03</b><h3>Séchoir</h3><p>Séchage contrôlé des granulés.</p></div></article>
-          <article class="eq reveal" data-cursor="Voir"><img src="assets/img/balles.jpg" alt="" loading="lazy"><div><b>04</b><h3>Presse &amp; emballage</h3><p>Balles de 33,33 kg filmées et palettisées.</p></div></article>
+    <section class="section section-tint">
+      <div class="container split">
+        <figure class="split-media reveal">
+          <img src="assets/img/echantillons-crepe.jpg" alt="Échantillons de caoutchouc crêpe" loading="lazy" width="1350" height="1800">
+        </figure>
+        <div class="split-text reveal">
+          <p class="eyebrow">Laboratoire</p>
+          <h2>Le grade est décidé au laboratoire</h2>
+          <p class="lead">Chaque lot est échantillonné et testé sur les six paramètres de la norme ISO 2000 : impuretés, cendres, azote, matières volatiles, plasticité initiale P0 et indice de rétention de plasticité (PRI).</p>
+          <a href="produits.html" class="link-arrow">Voir les spécifications <svg class="ic"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
     </section>
 
     <section class="cta">
-      <div class="cta-bg" data-speed="0.25" style="background-image:url(assets/img/export.jpg)"></div>
       <div class="container cta-in">
-        <h2 class="reveal">Besoin de <br>volumes réguliers ?</h2>
-        <div class="reveal">
+        <div>
+          <h2>Besoin de volumes réguliers ?</h2>
           <p>Indiquez le grade, le volume et la destination : nous vous répondons avec une offre et la fiche technique.</p>
-          <a href="contact.html#quote" class="btn btn-white magnetic">Demander un devis <svg class="ic"><use href="#i-arrow"/></svg></a>
         </div>
+        <div class="btn-row"><a href="contact.html#quote" class="btn btn-light">Demander un devis <svg class="ic"><use href="#i-arrow"/></svg></a></div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <a href="contact.html#quote" class="big-cta">
-      <span class="bc-track"><span>Parlons de votre besoin</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre besoin</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre besoin</span><svg class="ic"><use href="#i-arrow"/></svg><span>Parlons de votre besoin</span><svg class="ic"><use href="#i-arrow"/></svg></span>
-    </a>
+  <footer class="site-footer">
     <div class="container foot">
       <div class="foot-brand">
-        <img src="assets/img/logo-light.png" alt="PURCA">
-        <p>Production de caoutchouc naturel technique TSR10 et TSR20 en Côte d'Ivoire, pour l'industrie du pneumatique et du caoutchouc.</p>
+        <img src="assets/img/logo-light.png" alt="PURCA" width="168" height="40">
+        <p>Caoutchouc naturel technique TSR10 et TSR20, produit en Côte d'Ivoire pour l'industrie du pneumatique et du caoutchouc.</p>
       </div>
-      <div><h4>Navigation</h4><a href="entreprise.html">Entreprise</a><a href="produits.html">Produits</a><a href="production.html">Production</a><a href="galerie.html">Galerie</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div>
-      <div><h4>Produits</h4><div id="foot-products"></div></div>
-      <div><h4>Contact</h4><a data-site-href="tel" data-site="phone"></a><a data-site-href="mailto" data-site="email"></a><span data-site="address"></span><span data-site="hours"></span></div>
+      <div class="foot-col">
+        <h4>Navigation</h4>
+        <a href="entreprise.html">Entreprise</a><a href="produits.html">Produits</a><a href="production.html">Production</a><a href="galerie.html">Galerie</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h4>Produits</h4>
+        <div id="foot-products"></div>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a data-site-href="tel" data-site="phone"></a>
+        <a data-site-href="mailto" data-site="email"></a>
+        <span data-site="address"></span>
+        <span data-site="hours"></span>
+      </div>
     </div>
     <div class="container foot-bottom">
-      <span>© <span id="year"></span> PURCA — Caoutchouc naturel de Côte d'Ivoire</span>
-      <a href="admin/" class="admin-link" data-no-transition>Administration</a>
+      <span>© <span id="year"></span> PURCA. Caoutchouc naturel de Côte d'Ivoire.</span>
+      <span class="foot-links"><a href="credits.html">Crédits photos</a><a href="admin/">Administration</a></span>
     </div>
-    <div class="foot-flag"><i></i><i></i><i></i></div>
   </footer>
 
-  <a id="wa" class="wa" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ic"><use href="#i-wa"/></svg></a>
-  <button id="totop" aria-label="Haut de page"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18"/></svg><span>↑</span></button>
-  <div id="lightbox"><button class="lb-close" aria-label="Fermer">×</button><button class="lb-prev" aria-label="Précédent">‹</button><img alt=""><span class="lb-count"></span><button class="lb-next" aria-label="Suivant">›</button></div>
-  <div id="toast" role="status"></div>
+  <a id="wa" class="wa" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp"><svg class="ic"><use href="#i-wa"/></svg></a>
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="lb-close" type="button" aria-label="Fermer">×</button>
+    <button class="lb-prev" type="button" aria-label="Photo précédente">‹</button>
+    <img alt="">
+    <span class="lb-count"></span>
+    <button class="lb-next" type="button" aria-label="Photo suivante">›</button>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
 
-  <!-- Icônes -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-list" viewBox="0 0 24 24"><path d="M6 3.5h12v17H6z M9 8h6M9 12h6M9 16h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
-    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v5M12 7.5v.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
-    <symbol id="i-mountain" viewBox="0 0 24 24"><path d="M3 20 9.5 8l4 6.5L16 11l5 9z M8 12.5l1.5 1.5 1.5-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
-    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24"><path d="M12 2.8 20 6v6c0 4.6-3.3 8-8 9.2C7.3 20 4 16.6 4 12V6z M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
-    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2.5 6.5h11v9h-11zM13.5 9.5h4l3 3.5v2.5h-7z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="6.5" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
-    <symbol id="i-grid" viewBox="0 0 24 24"><path d="M3 5h18M3 12h18M3 19h18M7 3v18M12 3v18M17 3v18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
-    <symbol id="i-clock2" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9M12 7v5l3 2M17 3l4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
-    <symbol id="i-handshake" viewBox="0 0 24 24"><path d="M2.5 11 6 7.5l3 1 3-2 3.5 1 3.5-1L21.5 11M5 12l4.5 4.5a1.5 1.5 0 0 0 2.1 0L17 11M8 15l-1.5 1.5M11 17.5l-1 1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-helmet" viewBox="0 0 24 24"><path d="M3 17h18M4.5 17a7.5 7.5 0 0 1 15 0M10 9.8V6h4v3.8M12 6v5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 3.5h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.8 6.8l1.4-2.2 4.3 1.7V19a1.9 1.9 0 0 1-2 1.9A16.5 16.5 0 0 1 3.1 5.5 1.9 1.9 0 0 1 5 3.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3 5.5h18v13H3z M3.5 6l8.5 7 8.5-7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21.5s-7-6.2-7-11.5a7 7 0 0 1 14 0c0 5.3-7 11.5-7 11.5z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
     <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
     <symbol id="i-wa" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7a10.7 10.7 0 0 1-5.5-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1s-.5-.2-.7.2-.8 1-1 1.2-.4.2-.7 0a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.7 3.7 0 0 0-1.1 2.7 6.4 6.4 0 0 0 1.4 3.4 14.6 14.6 0 0 0 5.6 4.9c2 .9 2.9.9 3.9.8a3.3 3.3 0 0 0 2.2-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.2-.3-.3-.6-.4z"/></symbol>
-    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15M5 19l8-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.6 6 11a6 6 0 0 1-12 0c0-4.4 6-11 6-11z M9.5 14.5a2.6 2.6 0 0 0 2.5 2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9.5 3h5M10 3v6l-5.2 9.2A1.9 1.9 0 0 0 6.5 21h11a1.9 1.9 0 0 0 1.7-2.8L14 9V3M7.3 15h9.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-    <symbol id="i-box" viewBox="0 0 24 24"><path d="M3.5 7.5 12 3.5l8.5 4v9L12 20.5l-8.5-4zM3.5 7.5 12 11.5l8.5-4M12 11.5v9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
-    <symbol id="i-ship" viewBox="0 0 24 24"><path d="M3 16.5 4.5 20h15l1.5-3.5zM5 16.5V12h14v4.5M8 12V8h8v4M11 8V5h2v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
-    <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 21a6.5 6.5 0 0 1-6.5-6.5C5.5 10 9 8 9.5 4c3 2 4 4.5 3.8 7 1-.8 1.7-2 1.9-3.2 2 1.8 3.3 4.2 3.3 6.7A6.5 6.5 0 0 1 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
   </svg>
 
   <script src="assets/js/main.js"></script>

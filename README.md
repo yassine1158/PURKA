@@ -43,23 +43,22 @@ Chaque clic sur **Publier** crée un commit dans le dépôt ; GitHub Pages met l
 | Galerie | `galerie.html` |
 | FAQ | `faq.html` |
 | Contact & devis | `contact.html` |
+| Crédits photos | `credits.html` |
 | Page d'erreur | `404.html` |
-| **Version téléphone (une seule page)** | `mobile.html` |
 
-### Ordinateur / téléphone
+## Photos
 
-- **Ordinateur et tablette** : site multi-pages (une page par rubrique et par produit).
-- **Téléphone** : site sur **une seule page** (`mobile.html`) ; le menu fait défiler jusqu'à chaque rubrique et les produits s'ouvrent dans un panneau.
-- La bascule est automatique : un téléphone qui ouvre `produits.html` arrive sur `mobile.html#produits`, un ordinateur qui ouvre `mobile.html#galerie` arrive sur `galerie.html`. Les liens partagés fonctionnent donc sur tous les appareils.
+Les photos actuelles viennent de Wikimedia Commons, sous licence libre (CC BY, CC BY-SA). Leurs auteurs sont cités sur la page `credits.html`. Pour utiliser vos propres photos, ajoutez-les depuis l'administration (Galerie, ou « Changer la photo » sur un produit).
 
 ## Structure
 
 ```
 *.html                pages du site (générées, voir ci-dessous)
-assets/css, assets/js styles et effets (transitions entre pages, animations, curseur, lightbox…)
+assets/css, assets/js styles et scripts (catalogue, demande de devis, galerie, FAQ)
 assets/img            photos et logo
 data/products.json    catalogue des produits (modifié par l'admin)
 data/site.json        informations, chiffres clés, galerie et FAQ (modifiés par l'admin)
+data/credits.json     auteurs et licences des photos
 admin/                espace administration
 tools/                gabarits des pages + générateur
 ```

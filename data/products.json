@@ -19,11 +19,11 @@
       "po": "30",
       "pri": "50"
     },
-    "packaging": "Balles de 33,33 kg, palettes de 1,2 t",
+    "packaging": "Balles filmées, sur palettes ou en caisses",
     "price": "",
     "currency": "USD",
     "unit": "tonne",
-    "image": "assets/img/tsr10.jpg",
+    "image": "assets/img/latex-tasse.jpg",
     "available": true,
     "featured": true
   },
@@ -47,11 +47,11 @@
       "po": "30",
       "pri": "40"
     },
-    "packaging": "Balles de 33,33 kg, palettes de 1,2 t",
+    "packaging": "Balles filmées, sur palettes ou en caisses",
     "price": "",
     "currency": "USD",
     "unit": "tonne",
-    "image": "assets/img/tsr20.jpg",
+    "image": "assets/img/saignee.jpg",
     "available": true,
     "featured": true
   }

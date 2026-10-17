@@ -1,42 +1,48 @@
 <!--{"title":"Fiche produit — PURCA","desc":"Fiche produit PURCA : spécifications ISO 2000, conditionnement, applications. Demandez votre devis.","page":"produits"}-->
-    <section class="product-page">
-      <div class="container pp" id="pp">
-        <div class="pp-media">
-          <div class="pp-img mask-reveal"><img id="pp-img" alt=""></div>
-          <span class="pp-grain" id="pp-grain"></span>
-        </div>
-        <div class="pp-info">
-          <nav class="crumbs crumbs-dark split-up" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><a href="produits.html">Produits</a><span id="pp-crumb">…</span></nav>
-          <span class="badge pp-badge split-up" id="pp-cat"></span>
-          <h1 id="pp-title" class="pp-title">Chargement…</h1>
-          <p class="pp-desc split-up" id="pp-desc"></p>
-          <dl class="pm-specs split-up" id="pp-specs"></dl>
-          <div class="split-up"><span class="pp-label">Spécifications ISO 2000</span><div class="iso-wrap"><table class="iso-table iso-single" id="pp-iso"></table></div></div>
-          <div class="pp-uses split-up"><span class="pp-label">Applications</span><div class="tags" id="pp-tags"></div></div>
-          <div class="pm-order split-up">
-            <label class="num"><span>Quantité</span><input type="number" id="pp-qty" min="1" value="20"><i id="pp-unit">t</i></label>
-            <button class="btn" id="pp-add"><svg class="ic"><use href="#i-plus"/></svg> Ajouter au devis</button>
+    <section class="section product-page">
+      <div class="container">
+        <nav class="crumbs" aria-label="Fil d'Ariane"><a href="index.html">Accueil</a><a href="produits.html">Produits</a><span id="pp-crumb">…</span></nav>
+        <div class="pp" id="pp">
+          <figure class="pp-media">
+            <img id="pp-img" alt="">
+            <span class="pp-grade" id="pp-grade"></span>
+          </figure>
+          <div class="pp-info">
+            <span class="chip" id="pp-cat"></span>
+            <h1 id="pp-title">Chargement…</h1>
+            <p class="lead" id="pp-desc"></p>
+            <dl class="facts" id="pp-specs"></dl>
+            <div>
+              <p class="label">Spécifications ISO 2000</p>
+              <div class="table-wrap"><table class="iso-table iso-light iso-single" id="pp-iso"></table></div>
+            </div>
+            <div>
+              <p class="label">Applications</p>
+              <div class="tags" id="pp-tags"></div>
+            </div>
+            <div class="order">
+              <label class="qty-field"><span>Quantité</span><input type="number" id="pp-qty" min="1" value="20"><i id="pp-unit">t</i></label>
+              <button class="btn" id="pp-add" type="button"><svg class="ic"><use href="#i-plus"/></svg> Ajouter au devis</button>
+            </div>
+            <a class="link-wa" id="pp-wa" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg> Commander sur WhatsApp</a>
           </div>
-          <div class="pp-links split-up">
-            <a class="pm-wa" id="pp-wa" target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg> Commander sur WhatsApp</a>
-          </div>
         </div>
-      </div>
-      <div class="container pp-missing" id="pp-missing" hidden>
-        <h1>Produit introuvable</h1>
-        <p class="muted">Ce produit n'existe plus ou a été renommé.</p>
-        <a href="produits.html" class="btn">Voir tous les produits <svg class="ic"><use href="#i-arrow"/></svg></a>
+        <div class="pp-missing" id="pp-missing" hidden>
+          <h1>Produit introuvable</h1>
+          <p class="lead">Ce produit n'existe plus ou a été renommé.</p>
+          <a href="produits.html" class="btn">Voir tous les produits <svg class="ic"><use href="#i-arrow"/></svg></a>
+        </div>
       </div>
     </section>
 
-    <section class="section products-sec">
+    <section class="section section-tint">
       <div class="container">
-        <div class="head-row">
+        <div class="section-head">
           <div>
-            <span class="eyebrow reveal">À découvrir aussi</span>
-            <h2 class="reveal">Autres produits</h2>
+            <p class="eyebrow">À voir aussi</p>
+            <h2>Autres produits</h2>
           </div>
-          <a href="produits.html" class="more-link reveal">Tout le catalogue <svg class="ic"><use href="#i-arrow"/></svg></a>
+          <a href="produits.html" class="link-arrow">Tous les produits <svg class="ic"><use href="#i-arrow"/></svg></a>
         </div>
         <div class="products" id="products" data-limit="3" data-exclude-current></div>
       </div>

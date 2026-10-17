@@ -139,7 +139,7 @@
   const SPECS = ["dirt", "ash", "nitrogen", "volatile", "po", "pri"];
   function openForm(i) {
     editing = i;
-    const p = i >= 0 ? products[i] : { category: "tsr", unit: "tonne", currency: "USD", packaging: "Balles de 33,33 kg, palettes de 1,2 t", available: true, usages: [], specs: {}, image: "assets/img/balles.jpg" };
+    const p = i >= 0 ? products[i] : { category: "tsr", unit: "tonne", currency: "USD", packaging: "Balles filmées, sur palettes ou en caisses", available: true, usages: [], specs: {}, image: "assets/img/plantation.jpg" };
     $("#dlg-title").textContent = i >= 0 ? "Modifier le produit" : "Nouveau produit";
     for (const k of ["name", "category", "grade", "packaging", "price", "unit", "description"]) pf.elements[k].value = p[k] || "";
     pf.elements.currency.value = p.currency || "USD";
