@@ -1,6 +1,6 @@
 # PURCA
 
-Site vitrine de PURCA, producteur de caoutchouc naturel technique **TSR10** et **TSR20**.
+Site vitrine de PURCA, producteur de caoutchouc naturel technique **TSR10** et **TSR20** en Côte d'Ivoire.
 
 Site statique (HTML, CSS, JavaScript), sans dépendance ni étape de build. Disponible en français et en anglais.
 
