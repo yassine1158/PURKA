@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Évia Réception MP</title>
+<meta name="description" content="Réception des matières premières caoutchouc : contrôle qualité, bascule, stock, achats et paiements.">
+<meta name="theme-color" content="#18201E">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body class="locked">
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <div class="mark" aria-hidden="true">É</div>
+      <div><h1>Évia · Réception MP</h1><small>Caoutchouc — bascule &amp; stock</small></div>
+    </div>
+    <nav class="tabs desk" aria-label="Sections" id="navDesk"></nav>
+    <div class="live" id="live" data-s="wait"><span class="dot"></span><span id="liveTxt">Connexion…</span></div>
+    <button class="userbtn" type="button" data-tab="parametres" title="Mon compte"><span id="who"></span><small id="whoRole"></small></button>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<button class="fab" id="fab" type="button" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+  Nouvelle arrivée
+</button>
+<nav class="botnav" id="navBot" aria-label="Sections"></nav>
+<div id="sheetRoot"></div>
+<div id="toastRoot"></div>
+<div id="lightRoot"></div>
+<div id="gate" class="gate" hidden></div>
+<noscript><p style="padding:24px">Activez JavaScript pour utiliser l’application.</p></noscript>
+<script src="/app.js"></script>
+</body>
+</html>
